@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>MW Greek Info</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body>
+<h2>Coding of Greek in MW</h2>
+
+<p>This document describes how references to Greek words have been encoded
+in the <a href='http://www.sanskrit-lexicon.uni-koeln.de/monier/indexcaller.php'>Cologne</a> edition of the Monier-Williams Sanskrit-English dictionary. The result of this work may be seen in two places:
+<ul>
+ <li>A <a href='http://www.sanskrit-lexicon.uni-koeln.de/mwupdate/greek/web/disp/'>list</a> of the records of MW with corresponding Greek words.  A few omissions are indicated by a '?'.
+ </li>
+ <li>In <a href='http://www.sanskrit-lexicon.uni-koeln.de/monier/indexcaller.php'>MW</a>, by looking up a word that has Greek words.  The Greek words appear
+   in Greek unicode, and each contains a link to the 
+   Perseus <a href='http://www.perseus.tufts.edu/hopper/morph'>Word Study Tool</a>.
+ </li>
+</ul>
+</p>
+
+<p>The starting point of this work was an earlier (2007) edition of the xml form
+of MW in which Greek was embedded in the Beta encoding.  This work was
+done by Wendy Teo under the supervision of 
+<a href='http://www.sanskritlibrary.org'>Peter Scharf</a> and Malcolm Hyman.
+In this earlier edition, the position of text in the Greek alphabet had been
+indicated in Malten's initial coding by a placeholder character, '$'; text in other alphabets, such as
+Arabic, had been similarly indicated. The task was thus reduced to examining
+all such positions in relation to the
+<a href='http://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/'> scanned image</a> of the page; for those instances identified as Greek, the placeholder character was replaced by a standard transliteration of the Greek.  This transliteration was delimited by an identifiable character string, so that subsequent work could identify the instances of Greek transliteration.
+</p>
+<p>The next step was to integrate this encoding of the earlier MW edition into
+the current database representing MW.  I chose to replace the still-present
+placeholder character with an abstract element &lt;gk&gt;n&lt;/gk&gt;. The
+content of this element is an index number for the MW record.  For instance,
+&lt;gk&gt;1&lt;/gk&gt; represents the 1st Greek word in a given record,
+&lt;gk&gt;2&lt;/gk&gt; represents the 2nd Greek word in a given record, and so forth.
+</p>
+<p>Then, a separate database table, <em>mwgreek</em>, was created.  It contains two fields:
+ <ol>
+ <li>lnum: the unique MW record number (the contents of the &lt;L&gt element)
+ </li>
+ <li>data: A text string with an idiosyncratic encoding of the sequence of Greek word
+    found in the given MW record.
+    For each such Greek word, three pieces of information are stored:
+    <ol>
+    <li>The beta code of the Greek word
+    </li>
+    <li>The unicode representation of the Greek word, based on the beta code
+    </li>
+    <li>An appropriate reference to the Greek word using a web service provided
+      by the 
+      <a href='http://www.perseus.tufts.edu/hopper/'>Perseus Digital Library</a>. 
+     For some words, this reference is the same as the beta code. It is known that for some
+     words a different spelling, in beta code, is required to access the 
+     desired Perseus data.  
+    </li>
+    </ol>
+  </li>
+ </ol>
+
+</p>
+<p>The transcoding of beta code into unicode for the Greek was accomplished by
+ creating a data table,  'beta_greek.xml'. This table is processed in the 
+ normal way by the transcoding routine developed in Java by Ralph Bunker, and
+ recoded in PHP.  A full account can be
+ <a href='http://www.sanskrit-lexicon.uni-koeln.de/mwupdate/greek/web/beta1/'>seen</a> by pressing the 'alphabet' button. 
+ This table was developed on the basis of the EpiDoc open source project, which was
+ identified by Gregory Crane, director of the Perseus project, in a communication to Scharf.  Specifically, the beta_greek.xml file was based on an examination
+ of the files BetaCodeConvert.properties and UnicodeCConverter.propertiies.
+ The first file corresponds beta codes (letters and diacritics) to property
+ names (such as 'A = alpha', '*A = Alpha'), and the second file corresponds
+ these property names to Unicode code points (such as 'alpha  = \u03B1', and
+ 'Alpha = \u0391').  <a href='http://www.supakoo.com/rick/ConvertGreek.asp'>Another</a> online reference describes how diacritics are added to letters (they follow the letter).  Putting these pieces together seems to give a fairly good
+representation of Greek unicode from Beta transliteration. 
+<br>
+Two  implementation blemishes, introduced by this implementation, of which I am aware are:
+<ul>
+ <li>a final sigma is represented in the same way as a non-final  sigma, rather
+     than by a special character.
+     <br/> Addendum: The display of Greek words in MW was changed so that
+           the special final-sigma character is presented. However, this
+           logic is implemented by a 'kluge', rather than internally by
+           transcoder.
+ </li>
+ <li> a 'macron' is not represented.  Teo coded this as '%26'. This was not mentioned in the Epidoc files
+   that I examined.
+ </li>
+</ul>
+</p>
+<p>Although the results as now constituted are acceptable, there are a few 
+places where further attention could lead to improvements:
+<ul>
+ <li> The few 'missing' Greek words need to be added by someone who knows
+ both Greek and Beta Code.
+ </li>
+ <li> The whole thing should be proofread by someone similarly knowledgeable.
+    This might be done using the list of MW records with Greek words mentioned
+    above.
+ </li>
+ <li> The 'Perseus' codes should be altered  where needed from their current
+      default value, as there are many cases where doing a Perseus look-up on
+      the default value yields no results.  For instance, 
+      the beta code for the first Greek word of the first MW record containing
+      a Greek word is 'A)' (alpha-lenis). Using 'A)' with the Perseus Word Study
+ Tool yields "Sorry, no information was found...".  However, there is information using 'A'.  I added this Perseus key to the record of 'mwgreek'. 
+ </li>
+
+</ul>
+</p>
+
+
+<address><a href="mailto:monier@jfunderburk3.com">Jim Funderburk</a></address>
+Last modified: January 9, 2010
+
+</body>
+</html>

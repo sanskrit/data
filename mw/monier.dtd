@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 20090606: added H1C, H2C, H3C, H4c elements -->
+<!-- 20090630: added indoitalic element 
+  This is intended to identify records whose coding
+  is H3x, but which were originally coded as H4x;
+  such records appear in what Monier-Williams calls 'indo-italic' style
+  print, even though they appear functionally to be compounds of 
+  H1 or H2 headwords. (ejf)
+-->
+<!-- 20100107: added <gk> element. Contents is a digit.  The digits
+    increase in a record. <gk>n</gk> corresponds to the nth <gk> element
+    in the mwgreek table (for the given L of the record)
+-->
+<!-- 20121029: added 'supL' and 'revL' attributes to 'L'; 
+    added 'type' attribute to 'pc.
+-->
+<!-- 20130505: added 'group' as an attribute for 'OR' and 'AND'
+    elements.  The value of the group attribute should be
+    a  semi-colon delimited sequence of pairs, where each pair
+    is a comma-delimited sequence L,key1.
+    Note that the list contains the L,key1 pair for the record containing it,
+    as well as the one-or-more L,key1 pairs of all associated records.
+    The inclusion of the key1 value is redundant as it is implied by L, 
+    but might be helpful in resolving problems.
+    This element is marked as IMPLIED, though this may be changed to REQUIRED
+    at a later date.
+-->
+<!-- 20130505: added 'type' as an attribute for 'see' element.
+    The value of the attribute should be the constant 'nonhier'.
+-->
+<!ELEMENT  monier (H1 | H2 | H3 | H4 | H1A | H2A | H3A | H4A |
+  H1B | H2B | H3B | H4B | H1C | H2C | H3C | H4C | HPW)*>
+<!ENTITY % extra_elts "(card|pron|lex)*" >
+<!ELEMENT H1 (h,%extra_elts;,body,tail) >
+<!ELEMENT H2 (h,%extra_elts;,body,tail) >
+<!ELEMENT H3 (h,%extra_elts;,body,tail) >
+<!ELEMENT H4 (h,%extra_elts;,body,tail) >
+<!ELEMENT H1A (h,%extra_elts;,body,tail) >
+<!ELEMENT H2A (h,%extra_elts;,body,tail) >
+<!ELEMENT H3A (h,%extra_elts;,body,tail) >
+<!ELEMENT H4A (h,%extra_elts;,body,tail) >
+<!ELEMENT H1B (h,%extra_elts;,body,tail) >
+<!ELEMENT H2B (h,%extra_elts;,body,tail) >
+<!ELEMENT H3B (h,%extra_elts;,body,tail) >
+<!ELEMENT H4B (h,%extra_elts;,body,tail) >
+<!ELEMENT H1C (h,%extra_elts;,body,tail) >
+<!ELEMENT H2C (h,%extra_elts;,body,tail) >
+<!ELEMENT H3C (h,%extra_elts;,body,tail) >
+<!ELEMENT H4C (h,%extra_elts;,body,tail) >
+<!ELEMENT HPW (h,%extra_elts;,body,tail) >
+<!ENTITY % special_chars "TWOWORDS | sr | sr1 | srs | srs1 | shortlong | shc" >
+<!ENTITY % misc_empty "fcom | abE | auml | 
+euml | ouml | uuml | etc | etc1 | etcetc | amp | eq | fs | msc | ccom | 
+to " >
+<!ENTITY % ref_elts "pc | pcol | phw | ORSL | cf | see | OR | AND | qv" >
+<!ENTITY % exper_elts "usage | idiom | sense | ellipsis | loan" >
+<!ENTITY % group_elts "b | b1 | p | p1 | c | c1 |  c2 | c3" >
+<!ENTITY % spcl_text  "ab | etym | s | as0 | asp0 | as1 | ns | bot | bio | root | 
+ls | hom | quote | gk" >
+<!ENTITY % lex_elts "lex | vlex " >
+<!ENTITY % phw_elts "dL | pL" >
+<!ENTITY % body_elts "%group_elts; | %special_chars; |  %misc_empty; |
+%exper_elts;  | %spcl_text; | %lex_elts; | %ref_elts; | %phw_elts;
+  " >
+<!-- h element -->
+<!ELEMENT h  (hc3,key1,hc1,key2,(hom | loan)*)>
+<!ELEMENT hc3 (#PCDATA)>
+<!ELEMENT key1 (#PCDATA)>
+<!ELEMENT hc1 (#PCDATA)>
+<!ELEMENT key2 (#PCDATA | %special_chars; | root)*>
+<!ELEMENT hom (#PCDATA) >
+<!-- special_chars -->
+<!ELEMENT TWOWORDS EMPTY >
+<!ELEMENT sr EMPTY >
+<!ELEMENT sr1 EMPTY >
+<!ELEMENT srs EMPTY >
+<!ELEMENT srs1 EMPTY >
+<!ELEMENT shortlong EMPTY>
+<!ELEMENT shc EMPTY>
+<!ELEMENT root (#PCDATA | %special_chars; | hom)* >
+<!ELEMENT body (#PCDATA  | %body_elts;)*> 
+<!ELEMENT b (#PCDATA  | %body_elts;)*> 
+<!ELEMENT b1 (#PCDATA  | %body_elts;)*> 
+<!ELEMENT c (#PCDATA  | %body_elts;)*> 
+<!ELEMENT c1 (#PCDATA  | %body_elts;)*> 
+<!ELEMENT c2 (#PCDATA  | %body_elts;)*> 
+<!ELEMENT c3 (#PCDATA  | %body_elts;)*> 
+<!ELEMENT p (#PCDATA  | %body_elts;)*> 
+<!ELEMENT p1 (#PCDATA  | %body_elts;)*> 
+<!-- misc_empty -->
+<!ELEMENT fcom EMPTY >
+<!ELEMENT abE (#PCDATA) >
+<!ELEMENT auml EMPTY >
+<!ELEMENT euml EMPTY >
+<!ELEMENT ouml EMPTY >
+<!ELEMENT uuml EMPTY >
+<!ELEMENT etc EMPTY >
+<!ELEMENT etc1 EMPTY >
+<!ELEMENT etcetc EMPTY >
+<!ELEMENT amp EMPTY >
+<!ELEMENT eq EMPTY >
+<!ELEMENT fs EMPTY >
+<!ELEMENT msc EMPTY >
+<!ELEMENT ccom EMPTY >
+<!ELEMENT to EMPTY >
+<!ELEMENT ls (#PCDATA | %body_elts; )* >
+<!-- exper_elts -->
+<!ELEMENT usage (#PCDATA | %body_elts; )*> 
+<!ELEMENT idiom (#PCDATA  | %body_elts; )*> 
+<!ELEMENT sense (#PCDATA | %body_elts; )*> 
+<!ELEMENT ellipsis EMPTY >
+<!ELEMENT loan EMPTY >
+<!-- extra elements between <h> and <body> -->
+<!ELEMENT pron (#PCDATA )*> 
+<!ELEMENT card (#PCDATA )*> 
+<!ELEMENT s (#PCDATA | %special_chars; | root | %group_elts;)* >
+<!ELEMENT vlex (#PCDATA | s | hom)* >
+<!ELEMENT lex (#PCDATA | %body_elts;)* >
+<!-- ref_elts -->
+<!ELEMENT qv EMPTY>
+<!ELEMENT cf EMPTY>
+<!ELEMENT see EMPTY>
+<!ELEMENT ab (#PCDATA | ab | p)* >
+<!ELEMENT as0 (#PCDATA) >
+<!ELEMENT asp0 (#PCDATA | as0 | as1 )* >
+<!ELEMENT as1 (#PCDATA | s)* >
+<!ELEMENT bio (#PCDATA )* >
+<!ELEMENT bot (#PCDATA )* >
+<!ELEMENT etym (#PCDATA | %body_elts; )* >
+<!ELEMENT pc (#PCDATA) >
+<!ELEMENT pcol (#PCDATA) >
+<!ELEMENT phw (#PCDATA | %body_elts;)* >
+<!ELEMENT ORSL (#PCDATA | dL | pL)* >
+<!ELEMENT quote (#PCDATA  | %body_elts;)* >
+<!ELEMENT ns (#PCDATA | fcom | root)* >
+<!ELEMENT OR (#PCDATA) >
+<!ELEMENT AND (#PCDATA) >
+<!ELEMENT pL (#PCDATA) >
+<!ELEMENT dL (#PCDATA) >
+<!-- tail -->
+<!ELEMENT tail (#PCDATA | L | pc | MW | mul |  mat | mscverb | indoitalic)*>
+<!ELEMENT L (#PCDATA) >
+<!ELEMENT MW (#PCDATA) >
+<!ELEMENT mul EMPTY >
+<!ELEMENT mat EMPTY >
+<!ELEMENT mscverb EMPTY >
+<!ELEMENT indoitalic EMPTY >
+<!ELEMENT gk (#PCDATA) >
+<!-- attributes  -->
+<!ATTLIST lex type (inh | phw | hw | hwifc | hwalt | nhw | hwinfo | part | extra) #IMPLIED >
+<!ATTLIST vlex type (root | preverb | nhw | hwalt | hwinfo | part) #IMPLIED >
+<!ATTLIST as0 type (ns) #IMPLIED >
+<!ATTLIST asp0 type (ns) #IMPLIED >
+<!ATTLIST L supL CDATA #IMPLIED ><!-- The value of the L of a supplement record prior to supplement integration -->
+<!ATTLIST L revL CDATA #IMPLIED ><!-- The value of the L of the supplement record that specified a revision to a base MW record but which itself is not included in the post-supplement integration monier.xml -->
+<!ATTLIST pc type (rev) #IMPLIED ><!-- The page and column on which the entry begins the revision record in the supplement -->
+<!ATTLIST OR group CDATA #IMPLIED >
+<!ATTLIST AND group CDATA #IMPLIED >
+<!ATTLIST see type (nonhier) #IMPLIED >

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+  <define name="MWauthorities">
+    <element name="MWauthorities">
+      <ref name="attlist.common"/>
+      <zeroOrMore>
+        <ref name="entry"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="entry">
+    <element name="entry">
+      <ref name="attlist.entry"/>
+      <ref name="abbr"/>
+      <ref name="expandMW"/>
+      <optional>
+        <ref name="expandNorm"/>
+      </optional>
+      <optional>
+        <ref name="addedInfo"/>
+      </optional>
+    </element>
+  </define>
+  <define name="abbr">
+    <element name="abbr">
+      <ref name="attlist.common"/>
+      <ref name="Text.model"/>
+    </element>
+  </define>
+  <define name="expandMW">
+    <element name="expandMW">
+      <ref name="attlist.common"/>
+      <ref name="Authority.model"/>
+    </element>
+  </define>
+  <define name="expandNorm">
+    <element name="expandNorm">
+      <ref name="attlist.common"/>
+      <ref name="Authority.model"/>
+    </element>
+  </define>
+  <define name="addedInfo">
+    <element name="addedInfo">
+      <ref name="attlist.common"/>
+      <ref name="Authority.model"/>
+    </element>
+  </define>
+  <define name="au">
+    <element name="au">
+      <ref name="attlist.common"/>
+      <ref name="Text.model"/>
+    </element>
+  </define>
+  <define name="ti">
+    <element name="ti">
+      <ref name="attlist.common"/>
+      <ref name="Text.model"/>
+    </element>
+  </define>
+  <define name="subti">
+    <element name="subti">
+      <ref name="attlist.common"/>
+      <ref name="Text.model"/>
+    </element>
+  </define>
+  <define name="litcat">
+    <element name="litcat">
+      <ref name="attlist.common"/>
+      <ref name="Text.model"/>
+    </element>
+  </define>
+  <define name="slp">
+    <element name="slp">
+      <ref name="attlist.slp"/>
+      <text/>
+    </element>
+  </define>
+  <define name="Authority.model">
+    <zeroOrMore>
+      <choice>
+        <text/>
+        <ref name="au"/>
+        <ref name="ti"/>
+        <ref name="subti"/>
+        <ref name="litcat"/>
+        <ref name="slp"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <define name="Text.model">
+    <zeroOrMore>
+      <choice>
+        <text/>
+        <ref name="slp"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  <define name="attlist.common" combine="interleave">
+    <empty/>
+  </define>
+  <define name="attlist.entry" combine="interleave">
+    <attribute name="type">
+      <choice>
+        <value>au</value>
+        <value>ti</value>
+        <value>subti</value>
+        <value>litcat</value>
+      </choice>
+    </attribute>
+  </define>
+  <define name="attlist.slp" combine="interleave">
+    <optional>
+      <attribute name="cap">
+        <choice>
+          <value>false</value>
+          <value>true</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <start>
+    <ref name="MWauthorities"/>
+  </start>
+</grammar>
