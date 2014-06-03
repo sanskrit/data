@@ -21,3 +21,11 @@ The list is a CSV file with `first,second,result,type` for a header:
   all contexts, `internal` rules apply between morphemes (generally speaking),
   and `external` rules apply between words (generally speaking).
 
+
+`upasargas.csv`
+---------------
+
+A list of all upasargas. This excludes other prefixes, such as noun-prefixes
+("sa") and non-upasarga verb prefixes ("svAgatI").
+
+The list is a CSV file with `name` for a header, where `name` is the upasarga.
