@@ -1,0 +1,589 @@
+first,second,result,type
+a,a,A,common
+a,A,A,common
+a,i,e,common
+a,I,e,common
+a,u,o,common
+a,U,o,common
+a,f,ar,common
+a,F,ar,common
+a,x,al,common
+a,X,al,common
+a,e,E,common
+a,E,E,common
+a,o,O,common
+a,O,O,common
+A,a,A,common
+A,A,A,common
+A,i,e,common
+A,I,e,common
+A,u,o,common
+A,U,o,common
+A,f,ar,common
+A,F,ar,common
+A,x,al,common
+A,X,al,common
+A,e,E,common
+A,E,E,common
+A,o,O,common
+A,O,O,common
+i,a,y a,common
+i,A,y A,common
+i,i,I,common
+i,I,I,common
+i,u,y u,common
+i,U,y U,common
+i,f,y f,common
+i,F,y F,common
+i,x,y x,common
+i,X,y X,common
+i,e,y e,common
+i,E,y E,common
+i,o,y o,common
+i,O,y O,common
+I,a,y a,common
+I,A,y A,common
+I,i,I,common
+I,I,I,common
+I,u,y u,common
+I,U,y U,common
+I,f,y f,common
+I,F,y F,common
+I,x,y x,common
+I,X,y X,common
+I,e,y e,common
+I,E,y E,common
+I,o,y o,common
+I,O,y O,common
+u,a,v a,common
+u,A,v A,common
+u,i,v i,common
+u,I,v I,common
+u,u,U,common
+u,U,U,common
+u,f,v f,common
+u,F,v F,common
+u,x,v x,common
+u,X,v X,common
+u,e,v e,common
+u,E,v E,common
+u,o,v o,common
+u,O,v O,common
+U,a,v a,common
+U,A,v A,common
+U,i,v i,common
+U,I,v I,common
+U,u,U,common
+U,U,U,common
+U,f,v f,common
+U,F,v F,common
+U,x,v x,common
+U,X,v X,common
+U,e,v e,common
+U,E,v E,common
+U,o,v o,common
+U,O,v O,common
+f,a,r a,common
+f,A,r A,common
+f,i,r i,common
+f,I,r I,common
+f,u,r u,common
+f,U,r U,common
+f,f,F,common
+f,F,F,common
+f,x,r x,common
+f,X,r X,common
+f,e,r e,common
+f,E,r E,common
+f,o,r o,common
+f,O,r O,common
+F,a,r a,common
+F,A,r A,common
+F,i,r i,common
+F,I,r I,common
+F,u,r u,common
+F,U,r U,common
+F,f,F,common
+F,F,F,common
+F,x,r x,common
+F,X,r X,common
+F,e,r e,common
+F,E,r E,common
+F,o,r o,common
+F,O,r O,common
+O,a,Av a,common
+O,Av,Av A,common
+O,i,Av i,common
+O,I,Av I,common
+O,u,Av u,common
+O,U,Av U,common
+O,f,Av f,common
+O,F,Av F,common
+O,x,Av x,common
+O,X,Av X,common
+O,e,Av e,common
+O,E,Av E,common
+O,o,Av o,common
+O,O,Av O,common
+r,a,r a,common
+r,A,r A,common
+r,i,r i,common
+r,I,r I,common
+r,u,r u,common
+r,U,r U,common
+r,f,r f,common
+r,F,r F,common
+r,x,r x,common
+r,X,r X,common
+r,e,r e,common
+r,E,r E,common
+r,o,r o,common
+r,O,r O,common
+r,g,r g,common
+r,G,r G,common
+r,N,r N,common
+r,j,r j,common
+r,J,r J,common
+r,Y,r Y,common
+r,q,r q,common
+r,Q,r Q,common
+r,R,r R,common
+r,d,r d,common
+r,D,r D,common
+r,n,r n,common
+r,b,r b,common
+r,B,r B,common
+r,m,r m,common
+r,y,r y,common
+r,r,r r,common
+r,l,r l,common
+r,v,r v,common
+r,h,r h,common
+ar,r,A r,common
+Ar,r,A r,common
+ir,r,I r,common
+Ir,r,I r,common
+ur,r,U r,common
+Ur,r,U r,common
+m,k,M k,common
+m,K,M K,common
+m,g,M g,common
+m,G,M G,common
+m,N,M N,common
+m,c,M c,common
+m,C,M C,common
+m,j,M j,common
+m,J,M J,common
+m,Y,M Y,common
+m,w,M w,common
+m,W,M W,common
+m,q,M q,common
+m,Q,M Q,common
+m,R,M R,common
+m,t,M t,common
+m,T,M T,common
+m,d,M d,common
+m,D,M D,common
+m,n,M n,common
+m,p,M p,common
+m,P,M P,common
+m,b,M b,common
+m,B,M B,common
+m,m,M m,common
+m,y,M y,common
+m,r,M r,common
+m,l,M l,common
+m,v,M v,common
+m,S,M S,common
+m,z,M z,common
+m,s,M s,common
+m,h,M h,common
+n,j,Y j,common
+n,J,Y J,common
+n,S,Y S,common
+n,q,R q,common
+n,Q,R Q,common
+n,l,~l l,common
+t,g,d g,common
+t,G,d G,common
+t,N,d N,common
+t,Y,d Y,common
+t,R,d R,common
+t,d,d d,common
+t,D,d D,common
+t,b,d b,common
+t,B,d B,common
+t,h,d h,common
+t,c,c c,common
+t,C,c C,common
+t,j,j j,common
+t,J,j J,common
+t,w,w w,common
+t,W,w W,common
+t,q,q q,common
+t,Q,q Q,common
+t,n,n n,common
+t,m,n m,common
+t,l,l l,common
+t,v,d v,common
+t,n,n n,common
+t,m,n m,common
+t,S,c C,common
+t,h,d D,common
+k,n,N n,common
+k,m,N m,common
+a,C,a cC,common
+i,C,i cC,common
+u,C,u cC,common
+f,C,f cC,common
+x,C,x cC,common
+k,h,g G,common
+t,h,d D,common
+e,a,e ',external
+e,A,a A,external
+e,i,a i,external
+e,I,a I,external
+e,u,a u,external
+e,U,a U,external
+e,f,a f,external
+e,F,a F,external
+e,e,a e,external
+e,E,a E,external
+e,o,a o,external
+e,O,a O,external
+E,a,A a,external
+E,A,A A,external
+E,i,A i,external
+E,I,A I,external
+E,u,A u,external
+E,U,A U,external
+E,f,A f,external
+E,F,A F,external
+E,x,A x,external
+E,X,A X,external
+E,e,A e,external
+E,E,A E,external
+E,o,A o,external
+E,O,A O,external
+as,a,o ',external
+as,aM,o M,external
+as,A,a A,external
+as,i,a i,external
+as,I,a I,external
+as,u,a u,external
+as,U,a U,external
+as,f,a f,external
+as,F,a F,external
+as,e,a e,external
+as,E,a E,external
+as,o,a o,external
+as,O,a O,external
+as,g,o g,external
+as,G,o G,external
+as,N,o N,external
+as,j,o j,external
+as,J,o J,external
+as,Y,o Y,external
+as,q,o q,external
+as,Q,o Q,external
+as,R,o R,external
+as,d,o d,external
+as,D,o D,external
+as,n,o n,external
+as,b,o b,external
+as,B,o B,external
+as,m,o m,external
+as,y,o y,external
+as,r,o r,external
+as,l,o l,external
+as,v,o v,external
+as,h,o h,external
+s,k,H k,external
+s,K,H K,external
+s,p,H p,external
+s,P,H P,external
+s,S,h S,external
+s,z,h z,external
+s,s,h s,external
+s,c,S c,external
+s,C,S C,external
+s,w,z w,external
+s,W,z W,external
+s,t,s t,external
+s,T,s T,external
+s,'',H,external
+r,k,H k,external
+r,K,H K,external
+r,p,H p,external
+r,P,H P,external
+r,S,H S,external
+r,z,H z,external
+r,s,H s,external
+r,c,S c,external
+r,C,S C,external
+r,w,z w,external
+r,W,z W,external
+r,t,s t,external
+r,T,s T,external
+r,'',H,external
+As,a,A a,external
+As,A,A A,external
+As,i,A i,external
+As,I,A I,external
+As,u,A u,external
+As,U,A U,external
+As,f,A f,external
+As,F,A F,external
+As,x,A x,external
+As,X,A X,external
+As,e,A e,external
+As,E,A E,external
+As,o,A o,external
+As,O,A O,external
+As,g,A g,external
+As,G,A G,external
+As,N,A N,external
+As,j,A j,external
+As,J,A J,external
+As,Y,A Y,external
+As,q,A q,external
+As,Q,A Q,external
+As,R,A R,external
+As,d,A d,external
+As,D,A D,external
+As,n,A n,external
+As,b,A b,external
+As,B,A B,external
+As,m,A m,external
+As,y,A y,external
+As,r,A r,external
+As,l,A l,external
+As,v,A v,external
+As,h,A h,external
+is,g,ir g,external
+is,G,ir G,external
+is,N,ir N,external
+is,j,ir j,external
+is,J,ir J,external
+is,Y,ir Y,external
+is,q,ir q,external
+is,Q,ir Q,external
+is,R,ir R,external
+is,d,ir d,external
+is,D,ir D,external
+is,n,ir n,external
+is,b,ir b,external
+is,B,ir B,external
+is,m,ir m,external
+is,y,ir y,external
+is,r,ir r,external
+is,l,ir l,external
+is,v,ir v,external
+is,h,ir h,external
+Is,g,Ir g,external
+Is,G,Ir G,external
+Is,N,Ir N,external
+Is,j,Ir j,external
+Is,J,Ir J,external
+Is,Y,Ir Y,external
+Is,q,Ir q,external
+Is,Q,Ir Q,external
+Is,R,Ir R,external
+Is,d,Ir d,external
+Is,D,Ir D,external
+Is,n,Ir n,external
+Is,b,Ir b,external
+Is,B,Ir B,external
+Is,m,Ir m,external
+Is,y,Ir y,external
+Is,r,Ir r,external
+Is,l,Ir l,external
+Is,v,Ir v,external
+Is,h,Ir h,external
+us,g,ur g,external
+us,G,ur G,external
+us,N,ur N,external
+us,j,ur j,external
+us,J,ur J,external
+us,Y,ur Y,external
+us,q,ur q,external
+us,Q,ur Q,external
+us,R,ur R,external
+us,d,ur d,external
+us,D,ur D,external
+us,n,ur n,external
+us,b,ur b,external
+us,B,ur B,external
+us,m,ur m,external
+us,y,ur y,external
+us,r,ur r,external
+us,l,ur l,external
+us,v,ur v,external
+us,h,ur h,external
+Us,g,Ur g,external
+Us,G,Ur G,external
+Us,N,Ur N,external
+Us,j,Ur j,external
+Us,J,Ur J,external
+Us,Y,Ur Y,external
+Us,q,Ur q,external
+Us,Q,Ur Q,external
+Us,R,Ur R,external
+Us,d,Ur d,external
+Us,D,Ur D,external
+Us,n,Ur n,external
+Us,b,Ur b,external
+Us,B,Ur B,external
+Us,m,Ur m,external
+Us,y,Ur y,external
+Us,r,Ur r,external
+Us,l,Ur l,external
+Us,v,Ur v,external
+Us,h,Ur h,external
+es,g,er g,external
+es,G,er G,external
+es,N,er N,external
+es,j,er j,external
+es,J,er J,external
+es,Y,er Y,external
+es,q,er q,external
+es,Q,er Q,external
+es,R,er R,external
+es,d,er d,external
+es,D,er D,external
+es,n,er n,external
+es,b,er b,external
+es,B,er B,external
+es,m,er m,external
+es,y,er y,external
+es,r,er r,external
+es,l,er l,external
+es,v,er v,external
+es,h,er h,external
+Es,g,Er g,external
+Es,G,Er G,external
+Es,N,Er N,external
+Es,j,Er j,external
+Es,J,Er J,external
+Es,Y,Er Y,external
+Es,q,Er q,external
+Es,Q,Er Q,external
+Es,R,Er R,external
+Es,d,Er d,external
+Es,D,Er D,external
+Es,n,Er n,external
+Es,b,Er b,external
+Es,B,Er B,external
+Es,m,Er m,external
+Es,y,Er y,external
+Es,r,Er r,external
+Es,l,Er l,external
+Es,v,Er v,external
+Es,h,Er h,external
+os,g,or g,external
+os,G,or G,external
+os,N,or N,external
+os,j,or j,external
+os,J,or J,external
+os,Y,or Y,external
+os,q,or q,external
+os,Q,or Q,external
+os,R,or R,external
+os,d,or d,external
+os,D,or D,external
+os,n,or n,external
+os,b,or b,external
+os,B,or B,external
+os,m,or m,external
+os,y,or y,external
+os,r,or r,external
+os,l,or l,external
+os,v,or v,external
+os,h,or h,external
+Os,g,Or g,external
+Os,G,Or G,external
+Os,N,Or N,external
+Os,j,Or j,external
+Os,J,Or J,external
+Os,Y,Or Y,external
+Os,q,Or q,external
+Os,Q,Or Q,external
+Os,R,Or R,external
+Os,d,Or d,external
+Os,D,Or D,external
+Os,n,Or n,external
+Os,b,Or b,external
+Os,B,Or B,external
+Os,m,Or m,external
+Os,y,Or y,external
+Os,r,Or r,external
+Os,l,Or l,external
+Os,v,Or v,external
+Os,h,Or h,external
+is,r,I r,external
+Is,r,I r,external
+us,r,U r,external
+Us,r,U r,external
+es,r,e r,external
+os,r,o r,external
+Es,r,E r,external
+Os,r,O r,external
+n,c,MS c,external
+n,C,MS C,external
+n,w,Mz w,external
+n,W,Mz W,external
+n,t,Ms t,external
+n,T,Ms T,external
+t,a,d a,external
+t,A,d A,external
+t,i,d i,external
+t,I,d I,external
+t,u,d u,external
+t,U,d U,external
+t,f,d f,external
+t,F,d F,external
+t,x,d x,external
+t,X,d X,external
+t,e,d e,external
+t,E,d E,external
+t,o,d o,external
+t,O,d O,external
+t,y,d y,external
+t,r,d r,external
+an,a,ann a,external
+an,i,ann i,external
+an,u,ann u,external
+an,f,ann f,external
+an,x,ann x,external
+in,a,inn a,external
+in,i,inn i,external
+in,u,inn u,external
+in,f,inn f,external
+in,x,inn x,external
+e,a,aya,internal
+e,A,ayA,internal
+e,i,ayi,internal
+e,I,ayI,internal
+e,u,ayu,internal
+e,U,ayU,internal
+o,a,ava,internal
+o,A,avA,internal
+o,i,avi,internal
+o,I,avI,internal
+o,u,avu,internal
+o,U,avU,internal
+E,a,Aya,internal
+E,A,AyA,internal
+O,a,Ava,internal
+O,A,AvA,internal
+G,t,gD,internal
+G,T,gD,internal
+D,t,dD,internal
+D,T,dD,internal
+B,t,bD,internal
+B,T,bD,internal
+S,t,zw,internal
+S,T,zW,internal
+S,s,kz,internal
+h,t,dD,internal
+h,T,dD,internal
