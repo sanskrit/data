@@ -1,20 +1,29 @@
 sanskrit-data
 =============
 
-A collection of versioned Sanskrit data. **NOTE** that each set of data has its
-own associated LICENSE.
+Versioned and high-quality Sanskrit linguistic data.
 
-Goals
------
-To create a collection of Sanskrit linguistic data that is:
+About the data
+--------------
+Verbs, participles, nouns, adjectives, pronouns, indeclinables, morphemes, and
+sandhi rules. If it's a Sanskrit word, it's probably here.
 
-- accurate
-- easy to process
-- publicly available
-- versioned
+The data comes from several sources, each with its own license. Check the
+LICENSE files in `huet`, `learnsanskrit.org`, and `mw` for details.
 
-Encoding
---------
-All Sanskrit strings are written in [SLP1](slp1).
+All Sanskrit strings are written in [SLP1](slp1), mainly because it is
+*extremely* convenient when processing Sanskrit programmatically. You can
+transliterate this data to some other representation by using a variety of
+[transliterators](https://github.com/sanskrit/sanscript).
 
 [slp1]: http://sanskrit1.ccv.brown.edu/Sanskrit/Vyakarana/Dhatupatha/mdhvcanidx/disp1/encodinghelp.html
+
+Quickstart
+----------
+The data comes from several sources, each with its own format. This script
+converts all of the data to a common format and stores the results in
+the `all-data` folder.
+
+    python bin/make_data.py
+
+... that is, it *will* soon, when it's ready.
