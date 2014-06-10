@@ -9,7 +9,8 @@ Verbs, participles, nouns, adjectives, pronouns, indeclinables, morphemes, and
 sandhi rules. If it's a Sanskrit word, it's probably here.
 
 The data comes from several sources, each with its own license. Check the
-LICENSE files in `huet`, `learnsanskrit.org`, and `mw` for details.
+LICENSE files in `learnsanskrit.org`, `sanskrit-heritage-site`, and
+`monier-williams` for details.
 
 All Sanskrit strings are written in [SLP1](slp1), mainly because it is
 *extremely* convenient when processing Sanskrit programmatically. You can
