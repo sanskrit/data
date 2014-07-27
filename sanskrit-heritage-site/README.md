@@ -37,7 +37,7 @@ Inflected verbs. This file was generated from `SL_roots.xml`.
 Column types
 ------------
 
-- `name`: the form itself (`gacCati').
+- `name`: the form itself (`gacCati`).
 - `root`: the root that produced the form (`gam`). This uses the Sanskrit
   Heritage Site notation.
 - `pos`: the part-of-speech. Possible values:
