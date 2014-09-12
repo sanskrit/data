@@ -17,32 +17,34 @@ documents:
 are superseded by the data in the other folders. So, this folder contains the
 following data instead:
 
+
 The files
 ---------
+
 ### `adverbs.csv`
+
 (Headers: `name,root,pos,modification`)
 
 `-tvA` gerunds. This file was generated from `SL_adverbs.xml`.
 
+
 ### `final.csv`
+
 (Headers: `name,root,pos,modification`)
 
 Infinitives and `-ya` gerunds. This file was generated from `SL_final.xml`.
 
+
 ### `roots.csv`
+
 (Headers: `name,root,class,person,number,mode,voice,modification`)
 
 Inflected verbs. This file was generated from `SL_roots.xml`.
 
+
 Column types
 ------------
 
-- `name`: the form itself (`gacCati`).
-- `root`: the root that produced the form (`gam`). This uses the Sanskrit
-  Heritage Site notation.
-- `pos`: the part-of-speech. Possible values:
-  - `gerund` for gerunds
-  - `infinitive` for infinitives
 - `class`: the verb class. Possible values:
   - `1` for class 1 (`gacCati`)
   - `2` for class 2 (`atti`)
@@ -55,14 +57,7 @@ Column types
   - `9` for class 9 (`krIRAti`)
   - `10` for class 10 (`corayati`)
   - `denom` for denominative verbs (`putrIyati`)
-- `person`: the verb person. Possible values:
-  - `1` for the first person (`gacCAmi`)
-  - `2` for the second person (`gacCasi`)
-  - `3` for the third person (`gacCati`)
-- `number`: the verb number. Possible values:
-  - `s` for the singular (`gacCati`)
-  - `d` for the dual (`gacCatas`)
-  - `p` for the plural (`gacCanti`)
+- `form`: the form itself (`gacCati`).
 - `mode`: the verb mode. Possible values:
   - `aor` for the aorist (`agamat`)
   - `ben` for the benedictive (`gamyAt`)
@@ -75,12 +70,25 @@ Column types
   - `pfut` for the periphrastic future (`gantA`)
   - `pres` for the present tense (`gacCati`)
   - `sfut` for the simple future (`gamizyati`)
-- `voice`: the verb voice. Possible values:
-  - `atma` for atmanepada
-  - `para` for parasmaipada
-  - `pass` for passive verbs
 - `modification`: the modification (if any) that was applied to the verb.
   Possible values:
   - `caus` for causative (`gamayati`)
   - `desid` for desiderative (`jigamizati`)
   - `intens` for intensives (`jaNgamyate`)
+- `number`: the verb number. Possible values:
+  - `s` for the singular (`gacCati`)
+  - `d` for the dual (`gacCatas`)
+  - `p` for the plural (`gacCanti`)
+- `person`: the verb person. Possible values:
+  - `1` for the first person (`gacCAmi`)
+  - `2` for the second person (`gacCasi`)
+  - `3` for the third person (`gacCati`)
+- `pos`: the part-of-speech. Possible values:
+  - `gerund` for gerunds
+  - `infinitive` for infinitives
+- `root`: the root that produced the form (`gam`). This uses the Sanskrit
+  Heritage Site notation.
+- `voice`: the verb voice. Possible values:
+  - `atma` for atmanepada
+  - `para` for parasmaipada
+  - `pass` for passive verbs
