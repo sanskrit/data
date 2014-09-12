@@ -6,6 +6,13 @@ This folder contains:
 The files
 ---------
 
+### `adjectives-irregular-complete.csv`
+
+(Headers: `stem,stem_genders,form,form_gender,case,number`)
+
+Irregular adjectives from M. R. Kale's *A Higher Sanskrit Grammar*.
+
+
 ### `nouns-irregular-complete.csv`
 
 (Headers: `stem,stem_genders,form,form_gender,case,number`)
