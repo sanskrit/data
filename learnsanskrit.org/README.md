@@ -13,12 +13,20 @@ The files
 Irregular adjectives from M. R. Kale's *A Higher Sanskrit Grammar*.
 
 
-### `nominal-endings.csv`
+### `nominal-endings-compounded.csv`
+
+(Headers: `stem,stem_genders,form,form_gender`)
+
+Nominal compound forms for various stems. Rows where the stem is `_` correspond
+to "ordinary" consonant stems (`vAc`, `-muh`).
+
+
+### `nominal-endings-inflected.csv`
 
 (Headers: `stem,stem_genders,form,form_gender,case,number`)
 
-Nominal endings for various stems. Rows where the stem is `_` correspond to
-"ordinary" consonant stems (`vAc`, `-muh`).
+Nominal inflectional endings for various stems. Rows where the stem is `_`
+correspond to "ordinary" consonant stems (`vAc`, `-muh`).
 
 
 ### `nouns-irregular-complete.csv`
