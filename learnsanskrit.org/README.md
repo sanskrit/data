@@ -1,7 +1,10 @@
 Data from learnsanskrit.org
 ===========================
 
+Hand-constructed data from learnsanskrit.org.
+
 This folder contains:
+
 
 The files
 ---------
