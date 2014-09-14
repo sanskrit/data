@@ -9,7 +9,7 @@ This folder contains:
 The files
 ---------
 
-### `adjectives-irregular-complete.csv`
+### `adjectives-irregular-inflected.csv`
 
 (Headers: `stem,stem_genders,form,form_gender,case,number`)
 
@@ -32,7 +32,7 @@ Nominal inflectional endings for various stems. Rows where the stem is `_`
 correspond to "ordinary" consonant stems (`vAc`, `-muh`).
 
 
-### `nouns-irregular-complete.csv`
+### `nouns-irregular-inflected.csv`
 
 (Headers: `stem,stem_genders,form,form_gender,case,number`)
 
