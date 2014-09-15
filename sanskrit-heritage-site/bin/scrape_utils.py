@@ -10,6 +10,19 @@ import xml.etree.cElementTree as ET
 
 
 translator = {
+    # Gender
+    'mas': 'm',
+    'fem': 'f',
+    'neu': 'n',
+    # Case
+    'nom': '1',
+    'acc': '2',
+    'ins': '3',
+    'dat': '4',
+    'abl': '5',
+    'gen': '6',
+    'loc': '7',
+    'voc': '8',
     # Person
     'fst': '1',
     'snd': '2',
@@ -51,3 +64,13 @@ def iter_xml(filename):
                 yield ET.fromstring(line)
             except ET.ParseError:
                 pass
+
+def make_csv_string(labels, rows):
+    """Print the given data as a CSV
+    :param labels: a list of labels
+    :param rows: a list of lists of strings. Each inner list must have
+                 a 1:1 correspondence with `labels`.
+    """
+    data = [','.join(labels)]
+    data.extend(','.join([x or '' for x in row]) for row in rows)
+    return '\n'.join(data)
