@@ -7,7 +7,7 @@ trans = scrape_utils.translator
 
 def scrape_adverbs(filename):
     """Gerunds (ktvA).
-    
+
     Infinitives (tum) come from SL_final.xml, and other indeclinables
     come from the MW data.
     """

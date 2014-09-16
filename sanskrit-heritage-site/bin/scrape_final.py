@@ -7,7 +7,7 @@ trans = scrape_utils.translator
 
 def scrape_adverbs(filename):
     """Gerunds (lyap) and infinitives (tum).
-    
+
     'tvA' gerunds come from SL_adverbs.xml.
     """
     labels = ['name', 'root', 'pos', 'modification']
@@ -42,12 +42,12 @@ def scrape_adverbs(filename):
     return '\n'.join(output)
 
 
-
 def main():
     if len(sys.argv) < 2:
         print 'Usage: scrape_adverbs.py <filename>'
         sys.exit()
     print scrape_adverbs(sys.argv[1])
+
 
 if __name__ == '__main__':
     main()
