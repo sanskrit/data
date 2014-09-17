@@ -20,7 +20,7 @@ Irregular adjectives from M. R. Kale's *A Higher Sanskrit Grammar*.
 
 (Headers: `stem,stem_genders,form,form_gender`)
 
-Nominal compound forms for various stems. Rows where the stem is `_` correspond
+Nominal compound forms of various stems. Rows where the stem is `_` correspond
 to "ordinary" consonant stems (`vAc`, `-muh`).
 
 
