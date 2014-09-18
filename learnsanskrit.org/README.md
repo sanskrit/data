@@ -101,7 +101,8 @@ Column types
   - `d` for the dual (`narau`)
   - `p` for the plural (`narAs`)
 - `stem`: the stem that produced the form (`nara`).
-- `stem_genders`: the grammatical genders of the stem. Possible values:
+- `stem_genders`: the grammatical genders of the stem, since a single stem can
+  be inflected in multiple genders. Possible values:
   - `m` for masculine (`nara`)
   - `f` for feminine (`vidyA`)
   - `n` for neuter (`Pala`)
