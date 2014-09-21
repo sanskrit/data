@@ -9,7 +9,7 @@ The files in these folder fall into three types:
 The dictionary itself
 ---------------------
 
-The dictionary is an XML document, with toplevel element `<monier>`. Every
+The dictionary is an XML document with toplevel element `<monier>`. Every
 element in `monier` is a single definition and is, itself, a valid XML
 document.
 
