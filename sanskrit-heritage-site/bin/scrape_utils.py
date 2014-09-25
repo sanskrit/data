@@ -53,6 +53,14 @@ translator = {
     'ca': 'caus',
     'int': 'intens',
     'des': 'desid',
+    # Participle stem (old?)
+    'pfut': ('fut', 'active'),
+    'pfutp': ('fut', 'pass'),
+    'ppr': ('pres', 'active'),
+    'pprp': ('pres', 'pass'),
+    'ppa': ('past', 'active'),
+    'ppp': ('past', 'pass'),
+    'ppft': ('perf', 'active')
 }
 
 

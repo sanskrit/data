@@ -35,6 +35,14 @@ The files
 Infinitives and `-ya` gerunds. This file was generated from `SL_final.xml`.
 
 
+### `parts.csv`
+
+(Headers: `stem,root,class,mode,voice,modification`)
+
+Participle stems. This file was generated from an older version of
+`SL_parts.xml`, since the newer version doesn't expose root information.
+
+
 ### `roots.csv`
 
 (Headers: `name,root,class,person,number,mode,voice,modification`)
@@ -89,6 +97,8 @@ Column types
 - `root`: the root that produced the form (`gam`). This uses the Sanskrit
   Heritage Site notation.
 - `voice`: the verb voice. Possible values:
+  - `active` for non-passive. This is useful, e.g., for participle stems like
+    `BUtavat`.
   - `atma` for atmanepada
   - `para` for parasmaipada
   - `pass` for passive verbs

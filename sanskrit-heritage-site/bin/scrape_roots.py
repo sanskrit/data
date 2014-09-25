@@ -5,13 +5,12 @@ import scrape_utils
 trans = scrape_utils.translator
 
 
-def scrape_verbs(filename):
+def scrape(filename):
     """Inflected verbs"""
     labels = ['name', 'root', 'class', 'person', 'number', 'mode', 'voice',
               'modification']
-    output = []
+    rows = []
 
-    output.append(','.join(labels))
     num_written = 0
     for xml in scrape_utils.iter_xml(filename):
         v = xml.find('v')
@@ -58,28 +57,20 @@ def scrape_verbs(filename):
         if vclass == '11':
             vclass = 'denom'
 
-        # Print as CSV
-        format_str = ','.join('{%s}' % x for x in labels)
-        output.append(format_str.format(**{
-            'name': name,
-            'root': root,
-            'class': vclass,
-            'person': person,
-            'number': number,
-            'mode': mode,
-            'voice': voice or '',
-            'modification': modification or '',
-        }))
+        rows.append((name, root, vclass, person, number, mode, voice,
+            modification))
         num_written += 1
 
-    return '\n'.join(output)
+    return labels, rows
 
 
 def main():
     if len(sys.argv) < 2:
         print 'Usage: scrape_roots.py <filename>'
         sys.exit()
-    print scrape_verbs(sys.argv[1])
+    labels, rows = scrape(sys.argv[1])
+    print scrape_utils.make_csv_string(labels, rows)
+
 
 if __name__ == '__main__':
     main()
