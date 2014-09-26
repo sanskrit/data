@@ -1,20 +1,18 @@
 """
 
 The Greek words used by the MW dictionary are defined on a web page. This
-script scrapes the web page then writes the data in CSV format to stdout.
-
-You can find the original web page in greeklist.html and the scraped data in
-greeklist.csv.
+script scrapes the web page then prints the data in CSV format to stdout.
 """
 
 import os
+import sys
 
 from bs4 import BeautifulSoup
 
 
 def main():
-    mw_dir = os.path.dirname(os.path.dirname(__file__))
-    filename = os.path.join(mw_dir, 'greeklist.html')
+    assert len(sys.argv) > 1
+    filename = sys.argv[1]
     soup = BeautifulSoup(open(filename).read())
     print 'L,betacode,index'
     for row in soup('table', {'class': 'maintable'})[0].tbody('tr'):
