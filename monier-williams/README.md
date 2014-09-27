@@ -17,7 +17,11 @@ downloaded so easily. This is in the "Greek data" section below.
 The files
 ---------
 
-Coming soon.
+### `indeclinables.csv`
+
+(Headers: `name`)
+
+Indeclinables, including adverbs, particles (*nipāta*), and more.
 
 
 Greek data

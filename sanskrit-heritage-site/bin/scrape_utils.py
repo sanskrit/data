@@ -73,6 +73,7 @@ def iter_xml(filename):
             except ET.ParseError:
                 pass
 
+
 def make_csv_string(labels, rows):
     """Print the given data as a CSV
     :param labels: a list of labels
