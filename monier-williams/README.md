@@ -18,10 +18,14 @@ The files
 ---------
 
 ### `indeclinables.csv`
-
 (Headers: `name`)
 
 Indeclinables, including adverbs, particles (*nipāta*), and more.
+
+### `nominals.csv`
+(Headers: `stem,stem_genders`)
+
+Nominal stems, including nouns and adjectives.
 
 
 Greek data

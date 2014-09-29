@@ -3,7 +3,8 @@ import xml.etree.cElementTree as ET
 
 
 def key_fn(x):
-    sounds = 'aAiIuUfFxXeEoOMHkKgGNcCjJYwWqQRtTdDnpPbBmyrlvSzsh'
+    sounds = 'aAiIuUfFxXeEoOMHkKgGNcCjJYwWqQRtTdDnpPbBmyrlLvSzsh|'
+    assert all (L in sounds for L in x), x
     return tuple(sounds.index(L) for L in x)
 
 
