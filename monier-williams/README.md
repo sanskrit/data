@@ -52,3 +52,19 @@ In retrospect, `L,index,betacode` is a more intuitive order, but it's not
 really worth changing.
 
 [betacode]: http://en.wikipedia.org/wiki/Beta_Code
+
+
+Column types
+------------
+
+- `stem`: the stem that produced the form (`nara`).
+- `stem_genders`: the grammatical genders of the stem, since a single stem can
+  be inflected in multiple genders. Possible values:
+  - `m` for masculine (`nara`)
+  - `f` for feminine (`vidyA`)
+  - `n` for neuter (`Pala`)
+  - `mf` for masculine or feminine
+  - `fn` for feminine or neuter
+  - `mn` for masculine or neuter
+  - `mfn` for any gender
+  - `none` for non-gendered stems (`mad`)
