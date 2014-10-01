@@ -25,7 +25,7 @@ Indeclinables, including adverbs, particles (*nipāta*), and more.
 ### `nominals.csv`
 (Headers: `stem,stem_genders`)
 
-Nominal stems, including nouns and adjectives.
+Nominal stems, including nouns and adjectives. Adjectives have the `mfn` gender.
 
 
 Greek data
@@ -66,5 +66,5 @@ Column types
   - `mf` for masculine or feminine
   - `fn` for feminine or neuter
   - `mn` for masculine or neuter
-  - `mfn` for any gender
+  - `mfn` for any gender. This is used for adjectives.
   - `none` for non-gendered stems (`mad`)
