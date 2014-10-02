@@ -36,6 +36,23 @@ def make_csv_string(labels, rows):
     return '\n'.join(data)
 
 
+def unique(items, key_fn):
+    """Keep only the unique items in `items`, maintaining order.
+    :param items: the list
+    :param key_fn: a function that, given an item, returns some ID for
+                   the item.
+    """
+    seen = set()
+    returned = []
+    for item in items:
+        key = key_fn(item)
+        if key in seen:
+            continue
+        else:
+            returned.append(item)
+            seen.add(key)
+    return returned
+
 def tick(word, i, num):
     if i % num == 0:
         print '-', word

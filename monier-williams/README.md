@@ -27,6 +27,10 @@ Indeclinables, including adverbs, particles (*nipāta*), and more.
 
 Nominal stems, including nouns and adjectives. Adjectives have the `mfn` gender.
 
+### `verb-prefixes.csv`
+(Headers: `name,prefix_type`)
+
+Verb prefixes, excluding *upasarga*s.
 
 Greek data
 ----------
@@ -57,6 +61,10 @@ really worth changing.
 Column types
 ------------
 
+- `prefix_type`: the type of the verb prefix. Possible values;
+  - `cvi` for *cvi* prefixes
+  - `DAc` for *ḍāc* prefixes
+  - `other` for other prefixes (excluding *upasarga*s)
 - `stem`: the stem that produced the form (`nara`).
 - `stem_genders`: the grammatical genders of the stem, since a single stem can
   be inflected in multiple genders. Possible values:
