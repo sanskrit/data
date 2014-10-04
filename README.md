@@ -3,6 +3,10 @@ sanskrit-data
 
 Versioned and high-quality Sanskrit linguistic data.
 
+The data has been cobbled together from a variety of sources, each with its own
+gaps. The data from the Sanskrit Heritage Site is the least accurate, mainly
+because it was generated programmatically.
+
 About the data
 --------------
 Verbs, participles, nouns, adjectives, pronouns, indeclinables, morphemes, and
