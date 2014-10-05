@@ -1,7 +1,8 @@
 Data from learnsanskrit.org
 ===========================
 
-Hand-constructed data from learnsanskrit.org.
+Hand-constructed data from learnsanskrit.org. Most of the data comes from M. R.
+Kale's *A Higher Sanskrit Grammar*.
 
 This folder contains:
 
