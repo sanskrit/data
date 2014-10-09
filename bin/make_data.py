@@ -58,6 +58,9 @@ def main():
     write_verb_prefixes(upasargas=paths['lso-upasargas'],
                         other=paths['mw-verb-prefixes'])
 
+    # Sandhi rules
+    write_to_output_dir(paths['lso-sandhi-rules'], 'sandhi-rules.csv')
+
 
 if __name__ == '__main__':
     main()
