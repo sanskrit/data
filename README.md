@@ -25,10 +25,12 @@ transliterate this data to some other representation by using a variety of
 
 Quickstart
 ----------
-The data comes from several sources, each with its own format. This script
+
+    git clone https://github.com/sanskrit/data.git
+    cd data
+    python bin/make_data.py
+    ls all-data
+
+The data comes from several sources, each with its own format. `make_data.py`
 converts all of the data to a common format and stores the results in
 the `all-data` folder.
-
-    python bin/make_data.py
-
-... that is, it *will* soon, when it's ready.
