@@ -121,8 +121,9 @@ def main():
                         other=paths['mw-verb-prefixes'],
                         outfile='verb-prefixes.csv')
 
-    # TODO: roots
+    # Roots
     # TODO: prefixed roots
+    write_to_output_dir(paths['mw-roots'], 'roots.csv')
 
     # Verbs
     write_shs_verbal_data(data_path=paths['shs-roots'],
