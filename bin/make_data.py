@@ -71,13 +71,14 @@ def get_mw_root_from_shs_root(root, blacklist, override):
     return root.partition('#')[0]
 
 
-def write_verbs(data_path, blacklist_path, override_path):
-    """
+def write_shs_verbal_data(data_path, blacklist_path, override_path, outfile):
+    """Write Sanskrit Heritage Site data after converting its roots.
 
     :param data_path: path to the actual verb data
     :param blacklist_path: path to a list of blacklisted roots
     :param override_path: path to a map from SHS roots to MW roots. If a root
                           isn't in this map, assume the SHS roots are just fine.
+    :param outfile:
     """
     with util.read_csv(blacklist_path) as reader:
         blacklist = {x['name'] for x in reader}
@@ -97,7 +98,7 @@ def write_verbs(data_path, blacklist_path, override_path):
             clean_rows.append(row)
         labels = reader.fieldnames
 
-    with util.write_csv(get_output_path('verbs.csv'), labels) as write_row:
+    with util.write_csv(get_output_path(outfile), labels) as write_row:
         for row in clean_rows:
             write_row(row)
 
@@ -124,11 +125,17 @@ def main():
     # TODO: prefixed roots
 
     # Verbs
-    write_verbs(data_path=paths['shs-roots'],
-                override_path=paths['shs-root-override'],
-                blacklist_path=paths['shs-root-blacklist'])
+    write_shs_verbal_data(data_path=paths['shs-roots'],
+                          override_path=paths['shs-root-override'],
+                          blacklist_path=paths['shs-root-blacklist'],
+                          outfile='verbs.csv')
 
-    # TODO: participles
+    # Participles
+    write_shs_verbal_data(data_path=paths['shs-parts'],
+                          override_path=paths['shs-root-override'],
+                          blacklist_path=paths['shs-root-blacklist'],
+                          outfile='participles.csv')
+
     # TODO: verbal indeclinables
 
     # Sandhi rules
