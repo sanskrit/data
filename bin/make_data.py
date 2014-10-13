@@ -39,11 +39,26 @@ def get_output_path(filename):
 
 def write_to_output_dir(in_path, outfile):
     """Copy `in_path` to `OUTPUT_DIR`/`outfile`."""
-    shutil.copy(in_path, get_output_path(outlife))
+    shutil.copy(in_path, get_output_path(outfile))
 
 
-def write_verb_prefixes(upasargas=None, other=None):
-    pass
+def write_verb_prefixes(upasargas, other, outfile):
+    with util.read_csv(upasargas) as reader:
+        upasargas = list(reader)
+
+    with util.read_csv(other) as reader:
+        other = list(reader)
+        labels = reader.fieldnames
+
+    assert 'prefix_type' in labels
+    for x in upasargas:
+        assert 'prefix_type' not in x
+        x['prefix_type'] = 'upasarga'
+
+    rows = sorted(upasargas + other, key=lambda x: util.key_fn(x['name']))
+    with util.write_csv(get_output_path(outfile), labels) as write_row:
+        for row in rows:
+            write_row(row)
 
 
 def get_mw_root_from_shs_root(root, blacklist, override):
@@ -102,12 +117,19 @@ def main():
 
     # Verb prefixes
     write_verb_prefixes(upasargas=paths['lso-upasargas'],
-                        other=paths['mw-verb-prefixes'])
+                        other=paths['mw-verb-prefixes'],
+                        outfile='verb-prefixes.csv')
+
+    # TODO: roots
+    # TODO: prefixed roots
 
     # Verbs
     write_verbs(data_path=paths['shs-roots'],
                 override_path=paths['shs-root-override'],
                 blacklist_path=paths['shs-root-blacklist'])
+
+    # TODO: participles
+    # TODO: verbal indeclinables
 
     # Sandhi rules
     write_to_output_dir(paths['lso-sandhi-rules'], 'sandhi-rules.csv')
