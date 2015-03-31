@@ -27,7 +27,7 @@ def tokenized_vlexes(xml):
 
 
 def scrape(xml_path):
-    """Scrape roots from the MW dictionary."""
+    """Scrape unprefixed roots from the MW dictionary."""
 
     labels = ['root', 'hom', 'class', 'voice']
     rows = []
@@ -36,7 +36,6 @@ def scrape(xml_path):
     all_voices = set('para atma'.split())
     voice_translator = {'p': 'para', 'a': 'atma', 'a1': 'atma'}
 
-    data = []
     for i, xml in enumerate(util.iter_mw_xml(xml_path)):
         if has_prefix(xml):
             continue

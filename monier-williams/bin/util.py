@@ -26,7 +26,8 @@ def iter_mw_xml(xml_path, regexp=None):
 
 
 def make_csv_string(labels, rows):
-    """Print the given data as a CSV
+    """Print the given data as a CSV.
+
     :param labels: a list of labels
     :param rows: a list of lists of strings. Each inner list must have
                  a 1:1 correspondence with `labels`.
@@ -38,6 +39,7 @@ def make_csv_string(labels, rows):
 
 def unique(items, key_fn=None):
     """Keep only the unique items in `items`, maintaining order.
+
     :param items: the list
     :param key_fn: a function that, given an item, returns some ID for
                    the item.
@@ -52,6 +54,7 @@ def unique(items, key_fn=None):
             returned.append(item)
             seen.add(key)
     return returned
+
 
 
 def tick(word, i, num):
