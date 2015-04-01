@@ -211,6 +211,48 @@ def write_shs_verbal_data(data_path, blacklist_path, override_path, outfile):
             write_row(row)
 
 
+def write_shs_verbal_indeclinables(adverbs, final, blacklist_path, override_path, outfile):
+    """Write SHS verbal indeclinables."""
+    with util.read_csv(blacklist_path) as reader:
+        blacklist = {x['name'] for x in reader}
+
+    with util.read_csv(override_path) as reader:
+        override = {x['shs']: x['mw'] for x in reader}
+
+    labels = None
+    clean_rows = []
+    with util.read_csv(adverbs) as reader:
+        for row in reader:
+            root = get_mw_root_from_shs_root(row['root'], blacklist=blacklist,
+                                             override=override)
+            if root is None:
+                continue
+            row['root'] = root
+            clean_rows.append(row)
+
+        labels = reader.fieldnames
+
+    with util.read_csv(final) as reader:
+        for row in reader:
+            root = get_mw_root_from_shs_root(row['root'], blacklist=blacklist,
+                                             override=override)
+            if root is None:
+                continue
+
+            # TODO: handle 'ya' gerunds
+            if not row['form'].endswith('um'):
+                continue
+
+            row['root'] = root
+            clean_rows.append(row)
+
+        assert labels == reader.fieldnames
+
+    with util.write_csv(get_output_path(outfile), labels) as write_row:
+        for row in clean_rows:
+            write_row(row)
+
+
 def main():
     paths = make_path_map(
         [('mw', 'monier-williams'),
@@ -218,6 +260,7 @@ def main():
          ('lso', 'learnsanskrit.org')])
 
     # Nouns, pronouns, and adjectives
+    # TODO: irregular nominals
     copy_to_output_dir(paths['mw/nominals'], 'nominals.csv')
     copy_to_output_dir(paths['lso/pronouns-inflected'], 'pronouns.csv')
 
@@ -243,14 +286,22 @@ def main():
                           override_path=paths['shs/root-override'],
                           blacklist_path=paths['shs/root-blacklist'],
                           outfile='verbs.csv')
+    # TODO: prefixed verbs
 
     # Participles
     write_shs_verbal_data(data_path=paths['shs/parts'],
                           override_path=paths['shs/root-override'],
                           blacklist_path=paths['shs/root-blacklist'],
                           outfile='participles.csv')
+    # TODO: prefixed participles
 
     # TODO: verbal indeclinables
+    # TODO: prefixed indeclinables
+    write_shs_verbal_indeclinables(adverbs=paths['shs/adverbs'],
+            final=paths['shs/final'],
+            override_path=paths['shs/root-override'],
+            blacklist_path=paths['shs/root-blacklist'],
+            outfile='verbal-indeclinables.csv')
 
     # Sandhi rules
     copy_to_output_dir(paths['lso/sandhi-rules'], 'sandhi-rules.csv')
