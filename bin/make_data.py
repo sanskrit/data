@@ -9,6 +9,7 @@
 
 import csv
 import os
+import Queue
 import shutil
 import sys
 import time
@@ -28,7 +29,7 @@ def make_path_map(pairs):
         directory = os.path.join(DATA_DIR, prefix)
         for filename in os.listdir(directory):
             if filename.endswith('csv'):
-                name = abbr + '-' + os.path.splitext(filename)[0]
+                name = abbr + '/' + os.path.splitext(filename)[0]
                 paths[name] = '{}/{}'.format(directory, filename)
     return paths
 
@@ -37,7 +38,7 @@ def get_output_path(filename):
     return os.path.join(OUTPUT_DIR, filename)
 
 
-def write_to_output_dir(in_path, outfile):
+def copy_to_output_dir(in_path, outfile):
     """Copy `in_path` to `OUTPUT_DIR`/`outfile`."""
     shutil.copy(in_path, get_output_path(outfile))
 
@@ -59,6 +60,126 @@ def write_verb_prefixes(upasargas, other, outfile):
     with util.write_csv(get_output_path(outfile), labels) as write_row:
         for row in rows:
             write_row(row)
+
+
+def write_mw_prefixed_roots(prefixed_roots, unprefixed_roots, upasargas, other,
+                            sandhi_rules, outfile):
+    """Parse the prefixes in a prefix root and write the results.
+
+    This is a complex function. The procedure is roughly as follows:
+
+        for each prefixed root in `prefixed_roots`:
+            find (p_1, ..., p_n, r), where p_x is a prefix and r is a root
+            write the prefixed root and (p_1, ..., p_n, r) to file.
+
+    We find (p_1, .., p_n, r) by using the rules in `sandhi_rules` and verify
+    that `p_x` is a prefix by checking for membership in `upasargas` and
+    `other`.
+    """
+
+    # Loading prefixes
+    all_prefixes = set()
+    with util.read_csv(upasargas) as reader:
+        all_prefixes.update([x['name'] for x in reader])
+    with util.read_csv(other) as reader:
+        all_prefixes.update([x['name'] for x in reader])
+
+    # The 's' prefix is used in roots like 'saMskf' and 'parizkf'. Although it
+    # is prefixed to a verb, it is not semantically the same as the other verb
+    # prefixes. Here, though, we treat it as a verb prefix.
+    all_prefixes.add('s')
+
+    # Some prefixes have alternate forms.
+    prefix_alternates = {
+        'pi': 'api',
+        'ut': 'ud',
+        'Ri': 'ni',
+        'niz': 'nis',
+        'iz': 'nis',
+        'palA': 'parA',
+        'pali': 'pari',
+        'z': 's',
+    }
+    all_prefixes.update(prefix_alternates.keys())
+
+    # Loading sandhi rules
+    rules = []
+    with util.read_csv(sandhi_rules) as reader:
+        rules = [(x['first'], x['second'], x['result']) for x in reader]
+    # Prefixes use extra rules:
+    rules.extend([
+        ('a', 'f', 'Ar'),
+        ('i', 's', 'iz'),
+        ('i', 'st', 'izw'),
+        ('i', 'sT', 'izW'),
+        ('u', 's', 'uz'),
+        ('u', 'st', 'uzw'),
+        ('u', 'sT', 'uzW'),
+        ('is', 't', 'izw'),
+        ('t', 'sk', 'tk'),
+        ('t', 'st', 'tt'),
+        ('t', 'sT', 'tt')
+    ])
+    sandhi = util.Sandhi(rules)
+
+    with util.read_csv(prefixed_roots) as reader:
+        rows = []
+        for row in reader:
+            # Nibble away at `prefixed_root` until we have all prefixes for the
+            # given root.
+            prefixes = []
+            prefixed_root = row['prefixed-root']
+            unprefixed_root = row['unprefixed-root']
+            q = Queue.PriorityQueue()
+            for remainder in sandhi.split_off(prefixed_root, unprefixed_root):
+                q.put_nowait((0, (), remainder))
+
+            while not q.empty():
+                _, cur_prefixes, remainder = q.get_nowait()
+
+                # `remainder` has been exhausted: we're done!
+                if remainder in all_prefixes or not remainder:
+                    prefixes = list(cur_prefixes)
+                    if remainder:
+                        prefixes.append(remainder)
+                    break
+
+                for before, after in sandhi.splits(remainder):
+                    # Prevent recursion. As of this comment, the `splits` method
+                    # returns the non-split of some term X as (X, ''). In other
+                    # words, this conditional will *never* be true. But since the
+                    # behavior of various functions is still unsettled, this check
+                    # will stay here for the time being.
+                    if after == remainder:
+                        continue
+
+                    if before in all_prefixes:
+                        state = (cur_prefixes + (before,), after)
+                        cost = len(after)
+
+                        # Incentivize short vowels. This avoids errors with roots
+                        # like "upodgrah" ("upa-ud-grah"). Without the incentive,
+                        # we could have "upa-A-ud-grah" instead.
+                        if before and before[-1] in 'aiufx':
+                            cost -= 1
+                        q.put_nowait((cost,) + state)
+
+            # Convert 'alternate' prefixes back to their original forms.
+            prefixes = [prefix_alternates.get(x, x) for x in prefixes]
+            if not prefixes:
+                # Occurs if the root's prefix is unrecognized
+                continue
+
+            prefix_string = '-'.join(prefixes)
+
+            rows.append((prefixed_root, unprefixed_root,
+                         prefix_string, row['hom']))
+
+    labels = ['prefixed-root', 'prefixes', 'unprefixed-root', 'hom']
+    with util.write_csv(get_output_path(outfile), labels) as write_row:
+        for prefixed_root, unprefixed_root, prefix_string, hom in rows:
+            write_row({'prefixed-root': prefixed_root, 'unprefixed-root':
+                   unprefixed_root, 'prefixes': prefix_string, 'hom': hom})
 
 
 def get_mw_root_from_shs_root(root, blacklist, override):
@@ -110,37 +231,42 @@ def main():
          ('lso', 'learnsanskrit.org')])
 
     # Nouns, pronouns, and adjectives
-    write_to_output_dir(paths['mw-nominals'], 'nominals.csv')
-    write_to_output_dir(paths['lso-pronouns-inflected'], 'pronouns.csv')
+    copy_to_output_dir(paths['mw/nominals'], 'nominals.csv')
+    copy_to_output_dir(paths['lso/pronouns-inflected'], 'pronouns.csv')
 
     # Simple indeclinables
-    write_to_output_dir(paths['mw-indeclinables'], 'indeclinables.csv')
+    copy_to_output_dir(paths['mw/indeclinables'], 'indeclinables.csv')
 
     # Verb prefixes
-    write_verb_prefixes(upasargas=paths['lso-upasargas'],
-                        other=paths['mw-verb-prefixes'],
+    write_verb_prefixes(upasargas=paths['lso/upasargas'],
+                        other=paths['mw/verb-prefixes'],
                         outfile='verb-prefixes.csv')
 
     # Roots
-    # TODO: prefixed roots
-    write_to_output_dir(paths['mw-roots'], 'roots.csv')
+    copy_to_output_dir(paths['mw/unprefixed-roots'], 'unprefixed-roots.csv')
+    write_mw_prefixed_roots(paths['mw/prefixed-roots'],
+                            unprefixed_roots=paths['mw/unprefixed-roots'],
+                            upasargas=paths['lso/upasargas'],
+                            other=paths['mw/verb-prefixes'],
+                            sandhi_rules=paths['lso/sandhi-rules'],
+                            outfile='prefixed-roots.csv')
 
     # Verbs
-    write_shs_verbal_data(data_path=paths['shs-roots'],
-                          override_path=paths['shs-root-override'],
-                          blacklist_path=paths['shs-root-blacklist'],
+    write_shs_verbal_data(data_path=paths['shs/roots'],
+                          override_path=paths['shs/root-override'],
+                          blacklist_path=paths['shs/root-blacklist'],
                           outfile='verbs.csv')
 
     # Participles
-    write_shs_verbal_data(data_path=paths['shs-parts'],
-                          override_path=paths['shs-root-override'],
-                          blacklist_path=paths['shs-root-blacklist'],
+    write_shs_verbal_data(data_path=paths['shs/parts'],
+                          override_path=paths['shs/root-override'],
+                          blacklist_path=paths['shs/root-blacklist'],
                           outfile='participles.csv')
 
     # TODO: verbal indeclinables
 
     # Sandhi rules
-    write_to_output_dir(paths['lso-sandhi-rules'], 'sandhi-rules.csv')
+    copy_to_output_dir(paths['lso/sandhi-rules'], 'sandhi-rules.csv')
 
 
 if __name__ == '__main__':

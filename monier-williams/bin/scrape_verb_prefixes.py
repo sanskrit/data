@@ -61,15 +61,21 @@ def scrape(xml_path):
         if last in upasargas:
             continue
 
+
         # Add prefixes to the proper category
         name = ''.join(splits)
         _type = None
+
         if name[-1] in ('I', 'U'):
             _type = 'cvi'
         elif name.endswith('A'):
             _type = 'DAc'
         else:
             _type = 'other'
+
+        # 'sampra' is suggested as a prefix. This is wrong.
+        if name == 'sampra':
+            continue
 
         rows.append((name, _type))
 
