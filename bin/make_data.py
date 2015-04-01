@@ -14,6 +14,7 @@ import shutil
 import sys
 import time
 
+import sandhi as S
 import util
 
 BIN_DIR = os.path.dirname(__file__)
@@ -106,21 +107,7 @@ def write_mw_prefixed_roots(prefixed_roots, unprefixed_roots, upasargas, other,
     rules = []
     with util.read_csv(sandhi_rules) as reader:
         rules = [(x['first'], x['second'], x['result']) for x in reader]
-    # Prefixes use extra rules:
-    rules.extend([
-        ('a', 'f', 'Ar'),
-        ('i', 's', 'iz'),
-        ('i', 'st', 'izw'),
-        ('i', 'sT', 'izW'),
-        ('u', 's', 'uz'),
-        ('u', 'st', 'uzw'),
-        ('u', 'sT', 'uzW'),
-        ('is', 't', 'izw'),
-        ('t', 'sk', 'tk'),
-        ('t', 'st', 'tt'),
-        ('t', 'sT', 'tt')
-    ])
-    sandhi = util.Sandhi(rules)
+    sandhi = S.Sandhi(rules + S.PREFIX_SANDHI_RULES)
 
     with util.read_csv(prefixed_roots) as reader:
         rows = []
