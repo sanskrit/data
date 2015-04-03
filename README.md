@@ -1,10 +1,10 @@
 sanskrit-data
 =============
 
-Versioned and high-quality Sanskrit linguistic data.
+Versioned Sanskrit linguistic data.
 
-The data has been cobbled together from a variety of sources, each with its own
-gaps.
+The data has been cobbled together from a variety of sources. Together, the
+data covers almost all lexical forms in Classical Sanskrit literature.
 
 
 Quickstart
@@ -15,8 +15,8 @@ Quickstart
     ls all-data
 
 The data comes from several sources, each with its own format. `make_data.py`
-converts all of the data to a common format and stores the results in
-the `all-data` folder. This is the data that downstream systems should use.
+converts all of the data to a common format and stores the results in the
+`all-data` directory. This is the data that downstream systems should use.
 
 
 About the data
@@ -24,9 +24,9 @@ About the data
 Verbs, participles, nouns, adjectives, pronouns, indeclinables, morphemes, and
 sandhi rules. If it's a Sanskrit word, it's probably here.
 
-The data comes from several sources, each with its own license. Check the
-LICENSE files in `learnsanskrit.org`, `sanskrit-heritage-site`, and
-`monier-williams` for details.
+Each of the data sources used has its own license. Check the LICENSE files in
+`learnsanskrit.org`, `sanskrit-heritage-site`, and `monier-williams` for
+details.
 
 All Sanskrit strings are written in [SLP1](slp1), mainly because it is
 *extremely* convenient when processing Sanskrit programmatically. You can
