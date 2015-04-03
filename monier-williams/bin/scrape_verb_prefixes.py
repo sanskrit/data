@@ -28,6 +28,19 @@ sam
 su
 """
 
+def make_tidy(prefix):
+    """Undo certain kinds of sandhi. This is a hacky upasarga check."""
+    if not prefix:
+        return prefix
+    if prefix.endswith('A'):
+        return prefix[:-1] + 'a'
+    if prefix[-1] in 'zr':
+        return prefix[:-1] + 's'
+    if prefix.endswith('M'):
+        return prefix[:-1] + 'm'
+    return prefix
+
+
 def scrape(xml_path):
     """Scrape verb prefixed from the MW dictionary."""
 
@@ -58,7 +71,7 @@ def scrape(xml_path):
         # Remove groups ending in upasargas
         splits = [x for x in name.split('-') if x]
         last = splits[-1]
-        if last in upasargas:
+        if last in upasargas or make_tidy(last) in upasargas:
             continue
 
 
