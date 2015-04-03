@@ -129,3 +129,64 @@ Verb prefixes.
 (Headers: `form,root,class,person,number,mode,voice,modification`)
 
 Unprefixed verbs.
+
+
+Column types
+------------
+
+- `class`: the verb class. Possible values:
+  - `1` for class 1 (`gacCati`)
+  - `2` for class 2 (`atti`)
+  - `3` for class 3 (`juhoti`)
+  - `4` for class 4 (`dIvyati`)
+  - `5` for class 5 (`sunoti`)
+  - `6` for class 6 (`tudati`)
+  - `7` for class 7 (`ruRadDi`)
+  - `8` for class 8 (`tanoti`)
+  - `9` for class 9 (`krIRAti`)
+  - `10` for class 10 (`corayati`)
+  - `denom` for denominative verbs (`putrIyati`)
+- `hom`: short for *homonym*, this distinguishes two roots that sound the same
+  but have different meanings. Possible values are either the empty string or
+  a number (e.g. `1`). These come straight from the MW dictionary.
+- `mode`: the verb mode. Possible values:
+  - `aor` for the aorist (`agamat`)
+  - `ben` for the benedictive (`gamyAt`)
+  - `cond` for the conditional (`agamizyat`)
+  - `impv` for the imperative (`gacCa`)
+  - `inj` for the injunctive (`gamat`)
+  - `ipft` for the imperfect (`agacCat`)
+  - `opt` for the optative (`gacCet`)
+  - `perf` for the perfect (`jagAma`)
+  - `pfut` for the periphrastic future (`gantA`)
+  - `pres` for the present tense (`gacCati`)
+  - `sfut` for the simple future (`gamizyati`)
+- `modification`: the modification (if any) that was applied to the verb.
+- `number`: the verb number. Possible values:
+  - `s` for the singular (`gacCati`)
+  - `d` for the dual (`gacCatas`)
+  - `p` for the plural (`gacCanti`)
+- `prefix_type`: the type of the verb prefix. Possible values;
+  - `cvi` for *cvi* prefixes
+  - `DAc` for *ḍāc* prefixes
+  - `other` for other prefixes (excluding *upasarga*s)
+- `prefixed-root`: a prefixed verb root (`Agam`, but not `gam`)
+- `root`: a verb root (`gam`).
+- `stem`: a nominal stem (`nara`, `sundara`, `gantavya`)
+- `stem_genders`: the grammatical genders of the stem, since a single stem can
+  be inflected in multiple genders. Possible values:
+  - `m` for masculine (`nara`)
+  - `f` for feminine (`vidyA`)
+  - `n` for neuter (`Pala`)
+  - `mf` for masculine or feminine
+  - `fn` for feminine or neuter
+  - `mn` for masculine or neuter
+  - `mfn` for any gender. This is used for adjectives.
+  - `none` for non-gendered stems (`mad`)
+- `unprefixed-root`: an unprefixed verb root (`gam`, but not `Agam`)
+- `voice`: the verb voice. Possible values:
+  - `active` for non-passive. This is useful, e.g., for participle stems like
+    `BUtavat`.
+  - `atma` for atmanepada
+  - `para` for parasmaipada
+  - `pass` for passive verbs
