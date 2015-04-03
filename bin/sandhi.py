@@ -54,7 +54,7 @@ class Sandhi(object):
         self.splitter = HashTrie()
 
         for first, second, result in rules:
-            self.joiner[(first, second)] = result
+            self.joiner[(first, second)] = result.replace(' ', '')
 
             result = result.replace(' ', '')
             items = (first, second, result, len(first), len(second),
@@ -66,14 +66,17 @@ class Sandhi(object):
         """Apply the "n -> ṇ" and "s -> ṣ" rules of internal sandhi.
         :param term: the term to process
         """
+        return term
+
+        vowels = {'aAiIuUfFxXeEoO'}
         # causes "s" retroflexion
         s_trigger = set('iIuUfFeEoOkr')
         # causes "n" retroflexion
         n_trigger = set('fFrz')
         # Allowed after n_trigger
-        n_between = sounds.VOWELS.union('kKgGNpPbBmhvyM')
+        n_between = vowels.union('kKgGNpPbBmhvyM')
         # Must appear after the retroflexed "n"
-        n_after = sounds.VOWELS.union('myvn')
+        n_after = vowels.union('myvn')
         # Defines t retroflexion
         retroflexion_dict = dict(zip('tT', 'wW'))
 
