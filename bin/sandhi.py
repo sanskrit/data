@@ -21,7 +21,7 @@ PREFIX_SANDHI_RULES = [
     ('is', 't', 'izw'),
     ('t', 'sk', 'tk'),
     ('t', 'st', 'tt'),
-    ('t', 'sT', 'tt'),
+    ('t', 'sT', 'tT'),
 ]
 
 

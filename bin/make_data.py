@@ -63,17 +63,17 @@ def write_verb_prefixes(upasargas, other, outfile):
             write_row(row)
 
 
-def write_mw_prefixed_roots(prefixed_roots, unprefixed_roots, upasargas, other,
+def write_prefix_groups(prefixed_roots, unprefixed_roots, upasargas, other,
                             sandhi_rules, outfile):
-    """Parse the prefixes in a prefix root and write the results.
+    """Parse the prefixes in a prefix root and write out the prefix groups.
 
-    This is a complex function. The procedure is roughly as follows:
+    The procedure is roughly as follows:
 
         for each prefixed root in `prefixed_roots`:
             find (p_1, ..., p_n, r), where p_x is a prefix and r is a root
-            write the prefixed root and (p_1, ..., p_n, r) to file.
+            write the prefix group (p_1, ..., p_n) to file.
 
-    We find (p_1, .., p_n, r) by using the rules in `sandhi_rules` and verify
+    We find (p_1, .., p_n) by using the rules in `sandhi_rules` and verify
     that `p_x` is a prefix by checking for membership in `upasargas` and
     `other`.
     """
@@ -117,6 +117,8 @@ def write_mw_prefixed_roots(prefixed_roots, unprefixed_roots, upasargas, other,
             prefixes = []
             prefixed_root = row['prefixed-root']
             unprefixed_root = row['unprefixed-root']
+            last_letter = None
+
             q = Queue.PriorityQueue()
             for remainder in sandhi.split_off(prefixed_root, unprefixed_root):
                 q.put_nowait((0, (), remainder))
@@ -124,11 +126,12 @@ def write_mw_prefixed_roots(prefixed_roots, unprefixed_roots, upasargas, other,
             while not q.empty():
                 _, cur_prefixes, remainder = q.get_nowait()
 
-                # `remainder` has been exhausted: we're done!
-                if remainder in all_prefixes or not remainder:
+                # `remainder` is something we recognize: we're done!
+                if remainder in all_prefixes:
                     prefixes = list(cur_prefixes)
                     if remainder:
                         prefixes.append(remainder)
+                        last_letter = remainder[-1]
                     break
 
                 for before, after in sandhi.splits(remainder):
@@ -157,16 +160,47 @@ def write_mw_prefixed_roots(prefixed_roots, unprefixed_roots, upasargas, other,
                 # Occurs if the root's prefix is unrecognized
                 continue
 
+            # We still don't know the prefix group. We can find it by splitting
+            # off the root and keeping whatever matches `last_letter`.
+            for group in sandhi.split_off(prefixed_root, unprefixed_root):
+                if group[-1] == last_letter:
+                    break
             prefix_string = '-'.join(prefixes)
+            rows.append((group, prefix_string))
 
-            rows.append((prefixed_root, unprefixed_root,
-                         prefix_string, row['hom']))
+
+    labels = ['group', 'prefixes']
+    with util.write_csv(get_output_path(outfile), labels) as write_row:
+        for row in util.unique(rows):
+            datum = dict(zip(labels, row))
+            write_row(datum)
+
+
+def write_mw_prefixed_roots(prefixed_roots, unprefixed_roots, prefix_groups,
+                            sandhi_rules, outfile):
+    """Parse the prefixes in a prefix root and write the parsed roots."""
+
+    with util.read_csv(prefix_groups) as reader:
+        prefix_groups = {x['group']: x['prefixes'] for x in reader}
+
+    with util.read_csv(sandhi_rules) as reader:
+        rules = [(x['first'], x['second'], x['result']) for x in reader]
+        sandhi = S.Sandhi(rules + S.PREFIX_SANDHI_RULES)
+
+    with util.read_csv(prefixed_roots) as reader:
+        rows = []
+        for row in reader:
+            for group in sandhi.split_off(row['prefixed-root'],
+                                          row['unprefixed-root']):
+                if group in prefix_groups:
+                    rows.append((row['prefixed-root'], row['unprefixed-root'],
+                                 prefix_groups[group], row['hom']))
+                    break
 
     labels = ['prefixed-root', 'prefixes', 'unprefixed-root', 'hom']
     with util.write_csv(get_output_path(outfile), labels) as write_row:
-        for prefixed_root, unprefixed_root, prefix_string, hom in rows:
-            write_row({'prefixed-root': prefixed_root, 'unprefixed-root':
-                   unprefixed_root, 'prefixes': prefix_string, 'hom': hom})
+        for row in rows:
+            write_row(dict(zip(labels, row)))
 
 
 def get_mw_root_from_shs_root(root, blacklist, override):
@@ -272,12 +306,20 @@ def main():
                         other=paths['mw/verb-prefixes'],
                         outfile='verb-prefixes.csv')
 
+    # Prefix groups
+    write_prefix_groups(paths['mw/prefixed-roots'],
+                        unprefixed_roots=paths['mw/unprefixed-roots'],
+                        upasargas=paths['lso/upasargas'],
+                        other=paths['mw/verb-prefixes'],
+                        sandhi_rules=paths['lso/sandhi-rules'],
+                        outfile='prefix-groups.csv')
+
     # Roots
+    # NOTE: prefixed roots depend on output from write_prefix_groups
     copy_to_output_dir(paths['mw/unprefixed-roots'], 'unprefixed-roots.csv')
     write_mw_prefixed_roots(paths['mw/prefixed-roots'],
                             unprefixed_roots=paths['mw/unprefixed-roots'],
-                            upasargas=paths['lso/upasargas'],
-                            other=paths['mw/verb-prefixes'],
+                            prefix_groups=get_output_path('prefix-groups.csv'),
                             sandhi_rules=paths['lso/sandhi-rules'],
                             outfile='prefixed-roots.csv')
 
@@ -286,17 +328,14 @@ def main():
                           override_path=paths['shs/root-override'],
                           blacklist_path=paths['shs/root-blacklist'],
                           outfile='verbs.csv')
-    # TODO: prefixed verbs
 
     # Participles
     write_shs_verbal_data(data_path=paths['shs/parts'],
                           override_path=paths['shs/root-override'],
                           blacklist_path=paths['shs/root-blacklist'],
                           outfile='participles.csv')
-    # TODO: prefixed participles
 
-    # TODO: verbal indeclinables
-    # TODO: prefixed indeclinables
+    # Verbal indeclinables
     write_shs_verbal_indeclinables(adverbs=paths['shs/adverbs'],
             final=paths['shs/final'],
             override_path=paths['shs/root-override'],

@@ -49,3 +49,23 @@ def make_csv_string(labels, rows):
     data = [','.join(labels)]
     data.extend(','.join([x or '' for x in row]) for row in rows)
     return '\n'.join(data)
+
+
+def unique(items, key_fn=None):
+    """Keep only the unique items in `items`, maintaining order.
+
+    :param items: the list
+    :param key_fn: a function that, given an item, returns some ID for
+                   the item.
+    """
+    seen = set()
+    returned = []
+    for item in items:
+        key = key_fn(item) if key_fn else item
+        if key in seen:
+            continue
+        else:
+            returned.append(item)
+            seen.add(key)
+    return returned
+
