@@ -79,6 +79,13 @@ A list of all upasargas. This excludes other prefixes, such as noun prefixes
 The list is a CSV file with `name` for a header, where `name` is the upasarga.
 
 
+### `verb-endings.csv`
+
+(Headers: `form,class,person,number,mode,voice`)
+
+A list of verb endings.
+
+
 Column types
 ------------
 
@@ -91,16 +98,36 @@ Column types
   - `6` for case 6 (`narasya`)
   - `7` for case 7 (`nare`)
   - `8` for case 8 (`nara`)
+- `class`: the verb class. Possible values:
+  - `simple` for classes 1, 4, 6, and 10 (and denominative verbs)
+  - `complex` for classes 2, 3, 5, 7, 8, and 9
+  - `both` for any class
 - `form`: the form itself (`narasya`).
 - `form_gender`: the grammatical gender of the form. Possible values:
   - `m` for masculine (`naras`)
   - `f` for feminine (`vidyA`)
   - `n` for neuter (`Palam`)
   - `none` for non-gendered forms (`aham`)
+- `mode`: the verb mode. Possible values:
+  - `aor` for the aorist (`agamat`)
+  - `ben` for the benedictive (`gamyAt`)
+  - `cond` for the conditional (`agamizyat`)
+  - `impv` for the imperative (`gacCa`)
+  - `inj` for the injunctive (`gamat`)
+  - `ipft` for the imperfect (`agacCat`)
+  - `opt` for the optative (`gacCet`)
+  - `perf` for the perfect (`jagAma`)
+  - `pfut` for the periphrastic future (`gantA`)
+  - `pres` for the present tense (`gacCati`)
+  - `sfut` for the simple future (`gamizyati`)
 - `number`: the grammatical number. Possible values:
   - `s` for the singular (`naras`)
   - `d` for the dual (`narau`)
   - `p` for the plural (`narAs`)
+- `person`: the verb person. Possible values:
+  - `1` for the first person (`gacCAmi`)
+  - `2` for the second person (`gacCasi`)
+  - `3` for the third person (`gacCati`)
 - `stem`: the stem that produced the form (`nara`).
 - `stem_genders`: the grammatical genders of the stem, since a single stem can
   be inflected in multiple genders. Possible values:
@@ -112,3 +139,6 @@ Column types
   - `mn` for masculine or neuter
   - `mfn` for any gender
   - `none` for non-gendered stems (`mad`)
+- `voice`: the verb voice. Possible values:
+  - `atma` for atmanepada
+  - `para` for parasmaipada
