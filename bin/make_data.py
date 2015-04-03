@@ -52,6 +52,13 @@ def copy_to_output_dir(in_path, outfile):
     shutil.copy(in_path, get_output_path(outfile))
 
 
+def make_sandhi_object(sandhi_rules_file):
+    """Makes a Sandhi object for splitting and joining verb prefixes."""
+    with util.read_csv(sandhi_rules_file) as reader:
+        rules = [(x['first'], x['second'], x['result']) for x in reader]
+        return S.Sandhi(rules + S.PREFIX_SANDHI_RULES)
+
+
 def write_verb_prefixes(upasargas, other, outfile):
     with util.read_csv(upasargas) as reader:
         upasargas = list(reader)
@@ -112,10 +119,7 @@ def write_prefix_groups(prefixed_roots, unprefixed_roots, upasargas, other,
     all_prefixes.update(prefix_alternates.keys())
 
     # Loading sandhi rules
-    rules = []
-    with util.read_csv(sandhi_rules) as reader:
-        rules = [(x['first'], x['second'], x['result']) for x in reader]
-    sandhi = S.Sandhi(rules + S.PREFIX_SANDHI_RULES)
+    sandhi = make_sandhi_object(sandhi_rules)
 
     with util.read_csv(prefixed_roots) as reader:
         rows = []
@@ -190,9 +194,7 @@ def write_mw_prefixed_roots(prefixed_roots, unprefixed_roots, prefix_groups,
     with util.read_csv(prefix_groups) as reader:
         prefix_groups = {x['group']: x['prefixes'] for x in reader}
 
-    with util.read_csv(sandhi_rules) as reader:
-        rules = [(x['first'], x['second'], x['result']) for x in reader]
-        sandhi = S.Sandhi(rules + S.PREFIX_SANDHI_RULES)
+    sandhi = make_sandhi_object(sandhi_rules)
 
     with util.read_csv(prefixed_roots) as reader:
         rows = []
@@ -315,10 +317,7 @@ def write_prefixed_shs_verbal_data(data_path, prefixed_roots, blacklist_path,
     with util.read_csv(override_path) as reader:
         override = {x['shs']: x['mw'] for x in reader}
 
-    rules = []
-    with util.read_csv(sandhi_rules) as reader:
-        rules = [(x['first'], x['second'], x['result']) for x in reader]
-    sandhi = S.Sandhi(rules + S.PREFIX_SANDHI_RULES)
+    sandhi = make_sandhi_object(sandhi_rules)
 
     root_to_prefixed = {}
     with util.read_csv(prefixed_roots) as reader:
@@ -361,10 +360,7 @@ def write_prefixed_shs_verbal_indeclinables(adverbs_path, final_path,
     with util.read_csv(override_path) as reader:
         override = {x['shs']: x['mw'] for x in reader}
 
-    rules = []
-    with util.read_csv(sandhi_rules) as reader:
-        rules = [(x['first'], x['second'], x['result']) for x in reader]
-    sandhi = S.Sandhi(rules + S.PREFIX_SANDHI_RULES)
+    sandhi = make_sandhi_object(sandhi_rules)
 
     root_to_prefixed = {}
     with util.read_csv(prefixed_roots) as reader:
@@ -432,20 +428,23 @@ def main():
          ('shs', 'sanskrit-heritage-site'),
          ('lso', 'learnsanskrit.org')])
 
-    # Nouns, pronouns, and adjectives
+    def heading(s):
+        print 'Making ' + s + '...'
+
+    heading('Nouns, pronouns, and adjectives')
     # TODO: irregular nominals
     copy_to_output_dir(paths['mw/nominals'], 'nominals.csv')
     copy_to_output_dir(paths['lso/pronouns-inflected'], 'pronouns.csv')
 
-    # Simple indeclinables
+    heading('Simple indeclinables')
     copy_to_output_dir(paths['mw/indeclinables'], 'indeclinables.csv')
 
-    # Verb prefixes
+    heading('Verb prefixes')
     write_verb_prefixes(upasargas=paths['lso/upasargas'],
                         other=paths['mw/verb-prefixes'],
                         outfile='verb-prefixes.csv')
 
-    # Prefix groups
+    heading('Prefix groups')
     write_prefix_groups(paths['mw/prefixed-roots'],
                         unprefixed_roots=paths['mw/unprefixed-roots'],
                         upasargas=paths['lso/upasargas'],
@@ -453,7 +452,7 @@ def main():
                         sandhi_rules=paths['lso/sandhi-rules'],
                         outfile='prefix-groups.csv')
 
-    # Roots
+    heading('Roots')
     # NOTE: prefixed roots depend on output from write_prefix_groups
     copy_to_output_dir(paths['mw/unprefixed-roots'], 'unprefixed-roots.csv')
     write_mw_prefixed_roots(paths['mw/prefixed-roots'],
@@ -462,19 +461,19 @@ def main():
                             sandhi_rules=paths['lso/sandhi-rules'],
                             outfile='prefixed-roots.csv')
 
-    # Verbs
+    heading('Verbs')
     write_shs_verbal_data(data_path=paths['shs/roots'],
                           override_path=paths['shs/root-override'],
                           blacklist_path=paths['shs/root-blacklist'],
                           outfile='verbs.csv')
 
-    # Participles
+    heading('Participles')
     write_shs_verbal_data(data_path=paths['shs/parts'],
                           override_path=paths['shs/root-override'],
                           blacklist_path=paths['shs/root-blacklist'],
                           outfile='participles.csv')
 
-    # Verbal indeclinables
+    heading('Verbal indeclinables')
     write_shs_verbal_indeclinables(adverbs_path=paths['shs/adverbs'],
                                    final_path=paths['shs/final'],
                                    override_path=paths['shs/root-override'],
@@ -482,18 +481,15 @@ def main():
                                    outfile='verbal-indeclinables.csv')
 
     if args.make_prefixed_verbals:
-        print 'start'
+        heading('Prefixed verbs')
         write_prefixed_shs_verbal_data(data_path=paths['shs/roots'],
-                                       prefixed_roots=get_output_path(
-                                           'prefixed-roots.csv'),
-                                       override_path=paths[
-                                           'shs/root-override'],
-                                       blacklist_path=paths[
-                                           'shs/root-blacklist'],
-                                       sandhi_rules=paths['lso/sandhi-rules'],
-                                       outfile='prefixed-verbs.csv')
-        print 'end'
+                   prefixed_roots=get_output_path('prefixed-roots.csv'),
+                   override_path=paths['shs/root-override'],
+                   blacklist_path=paths['shs/root-blacklist'],
+                   sandhi_rules=paths['lso/sandhi-rules'],
+                   outfile='prefixed-verbs.csv')
 
+        heading('Prefixed participles')
         write_prefixed_shs_verbal_data(data_path=paths['shs/parts'],
                                        prefixed_roots=get_output_path(
                                            'prefixed-roots.csv'),
@@ -504,6 +500,7 @@ def main():
                                        sandhi_rules=paths['lso/sandhi-rules'],
                                        outfile='prefixed-participles.csv')
 
+        heading('Prefixed indeclinables')
         write_prefixed_shs_verbal_indeclinables(
             adverbs_path=paths['shs/adverbs'],
             final_path=paths['shs/final'],
