@@ -1,66 +1,76 @@
 Sanskrit data
 =============
 
-A collection of Sanskrit linguistic data. For details, see
-[the GitHub repo](github).
+A collection of Sanskrit linguistic data. For implementation details, see the
+project homepage at http://github.com/sanskrit/data .
 
-[github]: http://github.com/sanskrit/data
+
+Different data files are under different licenses, depending on the source that
+produced them. The licenses are:
+
+- `MW` for files under the Monier-Williams license.
+- `SHS` for files under the Sanskrit Heritage Site license.
+- `LSO` for files under the learnsanskrit.org license. (These files are in the
+  public domain.)
 
 
 The files
 ---------
 
-### `indeclinables.csv`
+### `indeclinables.csv` [MW]
 
 (Headers: `name`)
 
 Simple (i.e. non-verbal) indeclinables.
 
 
-### `nominals.csv`
+### `nominals.csv` [MW]
 
 (Headers: `stem,stem_genders`)
 
 Nouns and adjectives.
 
 
-### `participles.csv`
+### `participles.csv` [SHS]
 
 (Headers: `stem,root,class,mode,voice,modification`)
 
 Unprefixed participles.
 
 
-### `prefixed-participles.csv` [optional]
+### `prefixed-participles.csv` [SHS]
 
 (Headers: `stem,root,class,mode,voice,modification`)
 
-Prefixed participles.
+Prefixed participles. If `make_data.py` was run without
+`--make_prefixed_verbals`, this file won't appear.
 
 
-### `prefixed-roots.csv`
+### `prefixed-roots.csv` [MW]
 
 (Headers: `prefixed-root,prefixes,unprefixed-root,hom`)
 
 Unprefixed verb roots.
 
 
-### `prefixed-verbal-indeclinables.csv` [optional]
+### `prefixed-verbal-indeclinables.csv` [SHS]
 
 (Headers: `form,root,pos,modification`)
 
 Prefixed verbal indeclinables, i.e. gerunds (`Agamya`) and infinitives
-(`Agantum`).
+(`Agantum`). If `make_data.py` was run without `--make_prefixed_verbals`, this
+file won't appear.
 
 
-### `prefixed-verbs.csv` [optional]
+### `prefixed-verbs.csv` [SHS]
 
 (Headers: `form,root,class,person,number,mode,voice,modification`)
 
-Prefixed verbs.
+Prefixed verbs. If `make_data.py` was run without `--make_prefixed_verbals`,
+this file won't appear.
 
 
-### `prefix-groups.csv`
+### `prefix-groups.csv` [MW]
 
 (Headers: `group,prefixes`)
 
@@ -68,14 +78,14 @@ Clusters of verb prefixes, and the prefixes that compose them. This is useful
 if you ran `make_data.py` without setting `--make_prefixed_verbals`.
 
 
-### `pronouns.csv`
+### `pronouns.csv` [LSO]
 
 (Headers: `stem,stem_genders,form,form_gender,case,number`)
 
 A list of inflected pronouns.
 
 
-### `sandhi-rules.csv`
+### `sandhi-rules.csv` [LSO]
 
 A list of all sandhi rules that can be described in the form "A + B -> C". This
 list excludes sandhi rules that are specific to a single morpheme or a small
@@ -92,14 +102,14 @@ The list is a CSV file with the following headers:
   and `external` rules apply between words (generally speaking).
 
 
-### `unprefixed-roots.csv`
+### `unprefixed-roots.csv` [MW]
 
 (Headers: `root,hom,class,voice`)
 
 Unprefixed verb roots.
 
 
-### `verbal-indeclinables.csv`
+### `verbal-indeclinables.csv` [MW]
 
 (Headers: `form,root,pos,modification`)
 
@@ -107,14 +117,14 @@ Unprefixed verbal indeclinables, i.e. gerunds (`gatvA`) and infinitives
 (`gantum`).
 
 
-### `verb-prefixes.csv`
+### `verb-prefixes.csv` [MW]
 
 (Headers: `name,prefix_type`)
 
 Verb prefixes.
 
 
-### `verbs.csv`
+### `verbs.csv` [SHS]
 
 (Headers: `form,root,class,person,number,mode,voice,modification`)
 
