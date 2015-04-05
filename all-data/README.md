@@ -46,9 +46,9 @@ Prefixed participles. If `make_data.py` was run without
 `--make_prefixed_verbals`, this file won't appear.
 
 
-### `prefixed-roots.csv` [MW]
+### `prefixed_roots.csv` [MW]
 
-(Headers: `prefixed-root,prefixes,unprefixed-root,hom`)
+(Headers: `prefixed_root,prefixes,unprefixed_root,hom`)
 
 Unprefixed verb roots.
 
@@ -102,7 +102,7 @@ The list is a CSV file with the following headers:
   and `external` rules apply between words (generally speaking).
 
 
-### `unprefixed-roots.csv` [MW]
+### `unprefixed_roots.csv` [MW]
 
 (Headers: `root,hom,class,voice`)
 
@@ -170,7 +170,7 @@ Column types
   - `cvi` for *cvi* prefixes
   - `DAc` for *ḍāc* prefixes
   - `other` for other prefixes (excluding *upasarga*s)
-- `prefixed-root`: a prefixed verb root (`Agam`, but not `gam`)
+- `prefixed_root`: a prefixed verb root (`Agam`, but not `gam`)
 - `root`: a verb root (`gam`).
 - `stem`: a nominal stem (`nara`, `sundara`, `gantavya`)
 - `stem_genders`: the grammatical genders of the stem, since a single stem can
@@ -183,7 +183,7 @@ Column types
   - `mn` for masculine or neuter
   - `mfn` for any gender. This is used for adjectives.
   - `none` for non-gendered stems (`mad`)
-- `unprefixed-root`: an unprefixed verb root (`gam`, but not `Agam`)
+- `unprefixed_root`: an unprefixed verb root (`gam`, but not `Agam`)
 - `voice`: the verb voice. Possible values:
   - `active` for non-passive. This is useful, e.g., for participle stems like
     `BUtavat`.

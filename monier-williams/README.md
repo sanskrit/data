@@ -27,12 +27,12 @@ Indeclinables, including adverbs, particles (*nipāta*), and more.
 
 Nominal stems, including nouns and adjectives. Adjectives have the `mfn` gender.
 
-### `prefixed-roots.csv`
-(Headers: `prefixed-root,unprefixed-root,hom`)
+### `prefixed_roots.csv`
+(Headers: `prefixed_root,unprefixed_root,hom`)
 
 Unprefixed verb roots, including nominal roots.
 
-### `unprefixed-roots.csv`
+### `unprefixed_roots.csv`
 (Headers: `root,hom,class,voice`)
 
 Prefixed verb roots.
@@ -90,7 +90,7 @@ Column types
   - `cvi` for *cvi* prefixes
   - `DAc` for *ḍāc* prefixes
   - `other` for other prefixes (excluding *upasarga*s)
-- `prefixed-root`: see `root`
+- `prefixed_root`: see `root`
 - `root`: the root that produced the form (`gam`).
 - `stem`: the stem that produced the form (`nara`).
 - `stem_genders`: the grammatical genders of the stem, since a single stem can
@@ -103,7 +103,7 @@ Column types
   - `mn` for masculine or neuter
   - `mfn` for any gender. This is used for adjectives.
   - `none` for non-gendered stems (`mad`)
-- `unprefixed-root`: see `root`
+- `unprefixed_root`: see `root`
 - `voice`: the verb voice. Possible values:
   - `atma` for atmanepada
   - `para` for parasmaipada

@@ -32,7 +32,7 @@ def scrape(xml_path):
     This function doesn't scrape everything, but it's good enough.
     """
 
-    labels = ['prefixed-root', 'unprefixed-root', 'hom']
+    labels = ['prefixed_root', 'unprefixed_root', 'hom']
     rows = []
 
     for i, xml in enumerate(util.iter_mw_xml(xml_path, 'vlex')):
