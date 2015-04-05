@@ -130,7 +130,8 @@ def test_consistent_lso_data(path):
         # Upasargas
         'name': STEM_RE,
 
-        # Nominals
+        # Nominals and nominal endings
+        'ending': r'([a-zA-Z]+|)',
         'case': r'[12345678]',
         'form': STEM_RE,
         'number': r'[sdp]',
@@ -139,10 +140,10 @@ def test_consistent_lso_data(path):
         'form_gender': '([mfn]|none)',
 
         # Verb endings
-        'class': '(both|simple|complex)',
+        'category': '(both|simple|complex)',
         'person': '[123]',
         'number': '[sdp]',
-        'mode': r'(pres|impv|past|ipft|opt|ben|inj|perf|fut|sfut|pfut|cond|aor)',
+        'mode': r'(pres|impv|past|ipft|opt|ben|inj|perf|fut|sfut|dfut|cond|aor)',
         'voice': '(para|atma)',
 
         # Sandhi
