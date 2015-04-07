@@ -57,7 +57,7 @@ def scrape(xml_path):
             if (not unprefixed_root) and root_elem.tail:
                 unprefixed_root = root_elem.tail.strip()
 
-        if not unprefixed_root or unprefixed_root == '~':
+        if not unprefixed_root or '~' in unprefixed_root:
             continue
 
         # Some roots are homonymous. The MW <hom> element distinguishes one
