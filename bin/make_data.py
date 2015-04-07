@@ -127,8 +127,8 @@ def write_prefix_groups(prefixed_roots, unprefixed_roots, upasargas, other,
             # Nibble away at `prefixed_root` until we have all prefixes for the
             # given root.
             prefixes = []
-            prefixed_root = row['prefixed-root']
-            unprefixed_root = row['unprefixed-root']
+            prefixed_root = row['prefixed_root']
+            unprefixed_root = row['unprefixed_root']
             last_letter = None
 
             q = Queue.PriorityQueue()
@@ -199,14 +199,14 @@ def write_mw_prefixed_roots(prefixed_roots, unprefixed_roots, prefix_groups,
     with util.read_csv(prefixed_roots) as reader:
         rows = []
         for row in reader:
-            for group in sandhi.split_off(row['prefixed-root'],
-                                          row['unprefixed-root']):
+            for group in sandhi.split_off(row['prefixed_root'],
+                                          row['unprefixed_root']):
                 if group in prefix_groups:
-                    rows.append((row['prefixed-root'], prefix_groups[group],
-                                 row['unprefixed-root'], row['hom']))
+                    rows.append((row['prefixed_root'], prefix_groups[group],
+                                 row['unprefixed_root'], row['hom']))
                     break
 
-    labels = ['prefixed-root', 'prefixes', 'unprefixed-root', 'hom']
+    labels = ['prefixed_root', 'prefixes', 'unprefixed_root', 'hom']
     with util.write_csv(get_output_path(outfile), labels) as write_row:
         for row in rows:
             write_row(dict(zip(labels, row)))
@@ -322,7 +322,7 @@ def write_prefixed_shs_verbal_data(data_path, prefixed_roots, blacklist_path,
     root_to_prefixed = {}
     with util.read_csv(prefixed_roots) as reader:
         for row in reader:
-            root_to_prefixed.setdefault(row['unprefixed-root'], []).append(row)
+            root_to_prefixed.setdefault(row['unprefixed_root'], []).append(row)
 
     labels = None
     clean_rows = []
@@ -340,7 +340,7 @@ def write_prefixed_shs_verbal_data(data_path, prefixed_roots, blacklist_path,
                     if field in row:
                         new_row[field] = sandhi.join(
                             result['prefixes'].split('-') + [new_row[field]])
-                new_row['root'] = result['prefixed-root']
+                new_row['root'] = result['prefixed_root']
                 new_row['hom'] = result['hom']
                 clean_rows.append(new_row)
         labels = reader.fieldnames + ['hom']
@@ -365,7 +365,7 @@ def write_prefixed_shs_verbal_indeclinables(adverbs_path, final_path,
     root_to_prefixed = {}
     with util.read_csv(prefixed_roots) as reader:
         for row in reader:
-            root_to_prefixed.setdefault(row['unprefixed-root'], []).append(row)
+            root_to_prefixed.setdefault(row['unprefixed_root'], []).append(row)
 
     labels = None
     clean_rows = []
@@ -429,7 +429,7 @@ def main():
          ('lso', 'learnsanskrit.org')])
 
     def heading(s):
-        print 'Making ' + s + '...'
+        print '# ' + s + '...'
 
     heading('Nouns, pronouns, and adjectives')
     # TODO: irregular nominals
