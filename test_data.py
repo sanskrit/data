@@ -31,7 +31,7 @@ def test_consistent_column_names():
 
 @pytest.mark.parametrize('path', list(iter_csv_paths([MW_DIR])))
 def test_consistent_mw_data(path):
-    """Checks that all CSV data is well-typed."""
+    """Checks that the Monier-Williams data is well-typed."""
 
     STEM_RE = r'([a-zA-Z\|]+|_)'
     types = {
@@ -76,7 +76,7 @@ def test_consistent_mw_data(path):
 
 @pytest.mark.parametrize('path', list(iter_csv_paths([SHS_DIR])))
 def test_consistent_shs_data(path):
-    """Checks that all CSV data is well-typed."""
+    """Checks that the Sanskrit Heritage Site data is well-typed."""
 
     STEM_RE = r'([a-zA-Z\|]+|_)'
     ROOT_RE = '[a-zA-Z]+(#[1-9])?'
@@ -123,7 +123,7 @@ def test_consistent_shs_data(path):
 
 @pytest.mark.parametrize('path', list(iter_csv_paths([LSO_DIR])))
 def test_consistent_lso_data(path):
-    """Checks that all CSV data is well-typed."""
+    """Checks that the learnsanskrit.org data is well-typed."""
 
     STEM_RE = r'([a-zA-Z]+|_)'
     types = {
