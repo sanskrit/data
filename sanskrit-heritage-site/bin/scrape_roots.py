@@ -57,6 +57,9 @@ def scrape(filename):
         if vclass == '11':
             vclass = 'denom'
 
+        # For non-classed verb forms.
+        vclass = vclass or ''
+
         rows.append((name, root, vclass, person, number, mode, voice,
             modification))
         num_written += 1
