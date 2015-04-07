@@ -7,7 +7,7 @@ trans = scrape_utils.translator
 
 def scrape(filename):
     """Inflected verbs"""
-    labels = ['name', 'root', 'class', 'person', 'number', 'mode', 'voice',
+    labels = ['form', 'root', 'class', 'person', 'number', 'mode', 'voice',
               'modification']
     rows = []
 
