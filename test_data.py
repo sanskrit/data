@@ -130,6 +130,11 @@ def test_consistent_lso_data(path):
         # Upasargas
         'name': STEM_RE,
 
+        # Enums
+        'enum_type': '[a-z_]+',
+        'human_readable_value': '.*',
+        'abbreviation': r'.*',
+
         # Nominals and nominal endings
         'ending': r'([a-zA-Z]+|)',
         'case': r'[12345678]',
