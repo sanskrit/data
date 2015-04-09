@@ -20120,6 +20120,7 @@ ASvabala,mfn
 ASvaBArika,mfn
 ASvameDa,m
 ASvameDika,mfn
+ASvameDikI,f
 ASvayuj,m
 ASvayuja,mfn
 ASvayuja,m
@@ -20698,7 +20699,7 @@ iqAvat,mfn
 iqikA,f
 iqikka,m
 iqIya,mfn
-iqepahavana,n
+iqopahavana,n
 iqvara,m
 iRqarI,f
 iRqva,n
@@ -20781,12 +20782,12 @@ idaMyugIna,mfn
 idaMrUpa,mfn
 idaMvid,mfn
 idaMSabda,m
+idaNkAryA,f
 idadvasu,mfn
+idantana,mfn
+idantA,f
+idantftIya,mfn
 idamIya,mfn
-idamkAryA,f
-idamtana,mfn
-idamtA,f
-idamtftIya,mfn
 idamdvitIya,mfn
 idampraTama,mfn
 idammaDu,n
@@ -21924,14 +21925,14 @@ ucciwiNga,m
 uccita,mfn
 uccitraRa,n
 uccitrita,mfn
-uccilinga,m
+ucciliNga,m
 uccUqa,m
 ucceya,mfn
 uccEHkara,mfn
 uccEHkula,n
 uccEHkula,mfn
 uccEHpada,n
-uccEHpOrnamAsI,f
+uccEHpOrRamAsI,f
 uccEHSiras,mfn
 uccEHSravas,m
 uccEHSravasa,m
@@ -24317,7 +24318,6 @@ upajIvin,mfn
 upajIvya,mfn
 upajoza,m
 upajozaRa,n
-upajYa,mfn
 upajYA,f
 upajYAta,mfn
 upajman,m
@@ -25271,7 +25271,7 @@ upahvara,n
 upahvartavya,mfn
 upahvAna,n
 upAMSu,m
-upAMSukFqita,m
+upAMSukrIqita,m
 upAMSugraha,m
 upAMSuGAtaka,m
 upAMSutA,f
@@ -27406,7 +27406,6 @@ ekavIrakalpa,m
 ekavIrA,f
 ekavIrya,mfn
 ekavfka,m
-ekavfkIhIya,mfn
 ekavfkza,m
 ekavfkzIya,mfn
 ekavft,mfn
@@ -28316,7 +28315,7 @@ ozaDiloka,m
 ozaDivanaspati,n
 ozaDivanaspati,m
 ozaDivallaBa,m
-ozaDihomna,m
+ozaDihoma,m
 ozaDI,f
 ozaDItvara,m
 ozaDIpati,m
@@ -32937,8 +32936,8 @@ kANkzamARa,mfn
 kANkzA,f
 kANkzita,mfn
 kANkzita,n
+kANkzitA,f
 kANkzin,mfn
-kANkzintA,f
 kANkzI,f
 kANkzoru,m
 kANgA,f
@@ -33670,12 +33669,12 @@ kAmasenA,f
 kAmahAni,m
 kAmahEtuka,mfn
 kAmA,f
-kAmAkuya,n
 kAmAkuyatantra,n
-kAmAkuyA,f
 kAmAkzA,f
 kAmAkzAtantra,n
 kAmAkzI,f
+kAmAKya,n
+kAmAKyA,f
 kAmAgAyin,mfn
 kAmAgni,m
 kAmAgnisaMdIpana,n
@@ -38825,8 +38824,8 @@ kevalAdin,mfn
 kevalAdvEtavAdakuliSa,n
 kevalAnvayigranTa,m
 kevalAnvayin,mfn
-kevalAnvayinrahasya,n
-kevalAnvayinvAda,m
+kevalAnvayirahasya,n
+kevalAnvayivAda,m
 kevalin,mfn
 kevalin,m
 kevalI,f
@@ -43006,11 +43005,11 @@ gaganasTita,mfn
 gaganasparSana,m
 gaganaspfS,mfn
 gaganAgra,n
+gaganANgaRa,n
 gaganANganA,f
 gaganADivAsin,m
 gaganADvaga,m
 gaganAnanda,m
-gaganAngaRa,n
 gaganApagA,f
 gaganAmbu,n
 gaganAyas,n
@@ -44005,7 +44004,6 @@ gayAsadIna,m
 gayin,m
 gara,mfn
 gara,m
-gara,f
 gara,n
 garagir,mfn
 garagIrRa,mfn
@@ -44719,7 +44717,7 @@ gAnDAragrAma,m
 gAnDArarAja,m
 gAnDAri,m
 gAnDArikA,f
-gAnDArivlARija,m
+gAnDArivARija,m
 gAnDArisaptasama,m
 gAnDArI,f
 gAnDAreya,m
@@ -46603,7 +46601,7 @@ gobaka,m
 gobanDu,mfn
 gobala,m
 goballava,m
-gobijakAYcana,n
+gobIjakAYcana,n
 gobrAhmaRa,n
 gobrAhmaRamanuzya,m
 goBaga,mfn
@@ -47860,7 +47858,7 @@ Ganatoya,n
 Ganatola,m
 Ganatva,n
 Ganatvac,m
-GanadundBisvana,mfn
+GanadunduBisvana,mfn
 Ganadruma,m
 GanaDAtu,m
 GanaDvani,mfn
@@ -49228,6 +49226,7 @@ catuzkoRa,mfn
 catuzkoRa,mn
 catuzkrama,m
 catuzKaRqa,mfn
+catuzcatvAriMSadakzara,mfn
 catuzwaya,mfn
 catuzwaya,n
 catuzwoma,m
@@ -49272,7 +49271,6 @@ catuzpuRqrA,f
 catuzputra,mfn
 catuzprasTAnika,mfn
 catuzPalA,f
-catuscatvAriMSadakzara,mfn
 catustanA,f
 catustAla,m
 catustotra,mfn
@@ -51252,7 +51250,7 @@ cInAMSuka,n
 cInAka,m
 cInAkarkawI,f
 cInAcAraprayogaviDi,m
-cIpUdru,m
+cIpudru,m
 cIra,n
 cIra,m
 cIrakA,f
@@ -51769,8 +51767,8 @@ cOrI,f
 cOrIBUta,mfn
 cOrIsurata,n
 cOrodDaraRa,n
+cOrodDaraRika,m
 cOrodDartf,m
-cOrodDraRika,m
 cOrya,n
 cOryaka,n
 cOryarata,n
@@ -52511,11 +52509,11 @@ jaGnu,mfn
 jaGri,mfn
 jaNgapUga,m
 jaNgama,mfn
+jaNgama,f
 jaNgama,m
 jaNgamakuwI,f
 jaNgamatva,n
 jaNgamana,n
-jaNgamA,f
 jaNgametara,mfn
 jaNgala,mfn
 jaNgala,m
@@ -53016,7 +53014,6 @@ jambukeSvaratIrTa,n
 jambudvIpa,m
 jambudvIpaprajYapti,f
 jambudvIpavaralocana,m
-jambudvIpeSvara,m
 jambuDvaja,m
 jambuparvata,m
 jambuprasTa,m
@@ -53035,6 +53032,7 @@ jambUKaRqa,mn
 jambUKaRqavinirmARaparvan,n
 jambUdvIpa,m
 jambUdvIpaprajYapti,f
+jambUdvIpeSvara,m
 jambUnadI,f
 jambUmArga,m
 jambUla,m
@@ -54339,7 +54337,7 @@ jAlasarasa,n
 jAlahAsinI,f
 jAlahrada,m
 jAlANgulika,mfn
-jAlAbadDANgulipARipAdatalstA,f
+jAlAbadDANgulipARipAdatalatA,f
 jAlAvanadDa,mfn
 jAlAza,n
 jAlika,mfn
@@ -54906,8 +54904,8 @@ jIvitASA,f
 jIvitukAma,mfn
 jIvitepsu,mfn
 jIviteSa,m
+jIviteSA,f
 jIviteSvara,m
-jIvitesA,f
 jIvitodvahana,n
 jIvitva,n
 jIvin,mfn
@@ -55684,7 +55682,7 @@ JiYJiriwA,f
 JiYJirizwA,f
 JiYJirIwA,f
 JiYJI,f
-JiRkA,f
+JiRikA,f
 JiRwi,f
 JiRwikA,f
 JiRwI,f
@@ -55821,11 +55819,11 @@ Wakkura,m
 WAtkAra,m
 WiRWA,f
 WiRWAkarAla,m
-WunWupadDati,f
+WuRWupadDati,f
 Wetkfta,n
 Wepaka,m
 Wevaka,m
-WoRWapadDahati,f
+WoRWapadDati,f
 qa,m
 qakAra,m
 qakkArI,f
@@ -55957,7 +55955,6 @@ QolasamudrikA,f
 QollarI,f
 QOkana,n
 QOkita,mfn
-QlI,f
 Ra,m
 RakAra,m
 Rya,m
@@ -56115,7 +56112,6 @@ taRqulera,m
 taRqulotTa,n
 taRqulodaka,n
 taRqulOGa,m
-taRqyAyana,m
 taRqyAyanI,f
 tata,m
 tata,mfn
@@ -57399,6 +57395,7 @@ tARqin,m
 tARqya,m
 tARqya,n
 tARqyabrAhmaRa,n
+tARqyAyana,m
 tAta,m
 tAtagu,mfn
 tAtagu,m
@@ -61714,6 +61711,7 @@ dadAyuDa,mfn
 dadi,mfn
 daditf,m
 dadft,mfn
+dadfSAnapavi,mfn
 dadda,m
 dadru,m
 dadru,f
@@ -68234,7 +68232,6 @@ dvAdaSAyus,m
 dvAdaSAyoga,mfn
 dvAdaSAratni,mfn
 dvAdaSArka,m
-dvAdaSArcis,m
 dvAdaSAvarta,m
 dvAdaSAsra,n
 dvAdaSAsri,f
@@ -68398,7 +68395,6 @@ dvicatvAriMSat,f
 dvicandra,mfn
 dvicaraRa,mfn
 dvicAtvAriMSika,mfn
-dvicAtvArinSika,mfn
 dvicUqa,mfn
 dvicCinna,mfn
 dvija,mfn
@@ -69633,7 +69629,7 @@ DarmadinnA,f
 DarmadIpa,m
 DarmadIpikA,f
 DarmaduGA,f
-DarmadfQABedyasunilambba,m
+DarmadfQABedyasunilamBa,m
 DarmadfS,mfn
 Darmadfzwi,mfn
 Darmadeva,m
@@ -70382,7 +70378,7 @@ DArayadvat,mfn
 DArayARa,mfn
 DArayitavya,mfn
 DArayitf,m
-DArayitF,f
+DArayitrI,f
 DArayizRu,mfn
 DArayizRutA,f
 DArayu,mfn
@@ -79652,11 +79648,11 @@ paYcatikta,n
 paYcatiktaGfta,n
 paYcatIrTI,f
 paYcatriMSa,mfn
+paYcatriMSacClokI,f
 paYcatriMSati,f
+paYcatriMSatpIWikA,f
 paYcatriMSika,mfn
 paYcatrika,mfn
-paYcatrinSacClokI,f
-paYcatrinSatpIWikA,f
 paYcatva,n
 paYcaTa,mfn
 paYcaTu,m
@@ -80059,7 +80055,7 @@ paYcAkzarIviDAna,n
 paYcAkzarIzawprayoga,m
 paYcAkzarIstotra,n
 paYcAKyAna,n
-paYcAKyAnavarttika,n
+paYcAKyAnavArttika,n
 paYcAgni,n
 paYcAgni,mfn
 paYcAgnika,n
@@ -82378,7 +82374,7 @@ parigaRita,mfn
 parigaRitin,mfn
 parigaRya,mfn
 parigata,mfn
-parigatArWa,mfn
+parigatArTa,mfn
 parigaditin,mfn
 parigaDitA,f
 parigantavya,mfn
@@ -84038,7 +84034,7 @@ paryupta,mfn
 paryupti,f
 paryuzaRa,n
 paryuzaRAdaSaSatakavftti,f
-paryuzaRAzwAhnIkA,f
+paryuzaRAzwAhnikA,f
 paryuzita,mfn
 paryuzitaBojin,m
 paryuzitavya,n
@@ -84644,6 +84640,7 @@ paSyata,mfn
 paSyatohara,mfn
 paSyanA,f
 paSyantI,f
+paSvaizwi,mfn
 paSvaNga,n
 paSvaNgatA,f
 paSvayana,n
@@ -84654,7 +84651,6 @@ paSviqA,f
 paSviz,mfn
 paSvizwakA,f
 paSvizwi,f
-paSvizwi,mfn
 paSvekAdaSinI,f
 pazWavah,m
 pazWOhI,f
@@ -85274,8 +85270,8 @@ pAtaBeda,m
 pAtayitf,mfn
 pAtalya,n
 pAtavya,mfn
-pAtasAka,m
 pAtasAriRI,f
+pAtasAha,m
 pAtADikArodAharana,n
 pAtAla,n
 pAtAla,m
@@ -85325,7 +85321,7 @@ pAtratara,mfn
 pAtratA,f
 pAtratva,n
 pAtraDAraRa,n
-pAtranirnega,m
+pAtranirRega,m
 pAtraparIzwi,f
 pAtrapARi,m
 pAtrapAla,m
@@ -86050,7 +86046,7 @@ pArAvatadeSa,m
 pArAvatapadI,f
 pArAvatasavarRa,m
 pArAvatasavarRASva,m
-pArAvatAKza,m
+pArAvatAkza,m
 pArAvatANGripicCa,m
 pArAvatABa,mfn
 pArAvatASva,m
@@ -86214,11 +86210,11 @@ pArucCepa,n
 pArucCepi,m
 pArucCepI,f
 pAruzaka,m
+pAruzika,mfn
 pAruzeya,mfn
 pAruzRa,m
 pAruzya,n
 pAruzya,m
-pAruskika,mfn
 pAreDanva,m
 pAreDanvaka,mfn
 pArebaqavA,f
@@ -87846,7 +87842,6 @@ pukkasa,m
 pukkasa,f
 pukkasI,f
 puklaka,m
-pugrodBava,m
 puNKa,m
 puNKita,mfn
 puNKitaSara,mfn
@@ -88193,7 +88188,7 @@ putrAdinI,f
 putrAnnAda,mfn
 putrArTin,mfn
 putrikA,f
-putrikApuntra,m
+putrikAputra,m
 putrikApUrvaputra,m
 putrikAprasU,f
 putrikABartf,m
@@ -88981,6 +88976,7 @@ puroqASeqA,f
 puroqASya,mfn
 purotsava,m
 purodBava,mfn
+purodBava,m
 purodyAna,n
 puroDa,m
 puroDas,m
@@ -90313,7 +90309,7 @@ pfTaktvacA,f
 pfTakpada,mfn
 pfTakparRikA,f
 pfTakparRI,f
-pfTakpinda,m
+pfTakpiRqa,m
 pfTakSabda,m
 pfTakSayyA,f
 pfTakSAyin,mfn
@@ -90379,8 +90375,8 @@ pfTiviBAga,mfn
 pfTivimUla,m
 pfTiviloka,m
 pfTivizad,mfn
-pfTivizadzWa,mfn
-pfTivizadzWA,mfn
+pfTivizWa,mfn
+pfTivizWA,mfn
 pfTivisad,mfn
 pfTivI,f
 pfTivIMjaya,mfn
@@ -96067,7 +96063,7 @@ prasannaprAya,mfn
 prasannamuKa,mfn
 prasannarasa,mfn
 prasannarAGava,n
-prasannaveNkaweSvamAhAtmya,n
+prasannaveNkaweSvaramAhAtmya,n
 prasannasalila,mfn
 prasannA,f
 prasannAtman,mfn
@@ -96638,7 +96634,7 @@ prAkftaBAzAkAvya,n
 prAkftaBAzAntaraviDAna,n
 prAkftaBAzin,mfn
 prAkftamaYjarI,f
-prAkftamaRIdIpikA,f
+prAkftamaRidIpikA,f
 prAkftamanoramA,f
 prAkftamAnuza,m
 prAkftamitra,n
@@ -97621,8 +97617,8 @@ prAyAtrika,mfn
 prAyAsa,m
 prAyika,mfn
 prAyikatva,n
+prAyudDezin,m
 prAyuD,f
-prAyuDyudDezin,m
 prAyus,n
 prAyoktra,mfn
 prAyoga,mfn
@@ -105033,7 +105029,7 @@ BAravAhI,f
 BAravi,m
 BAravI,f
 BAravfkza,m
-BAravoDf,m
+BAravoQf,m
 BAraSfNga,m
 BArasaha,mfn
 BArasaha,m
@@ -112161,9 +112157,9 @@ mahAnAnAtva,n
 mahAnABa,mfn
 mahAnABa,m
 mahAnAman,m
-mahAnAmRIvrata,n
 mahAnAmnika,mfn
 mahAnAmnI,f
+mahAnAmnIvrata,n
 mahAnAyaka,m
 mahAnArAyaRa,m
 mahAnArAyaRopanizad,f
@@ -113098,11 +113094,11 @@ mahASiras,m
 mahASiroDara,mfn
 mahASilA,f
 mahASiva,m
-mahASivaratryudyApana,n
 mahASivarAtri,f
 mahASivarAtrinirRaya,m
 mahASivarAtrivrata,n
 mahASivarAtrivratanirRaya,m
+mahASivarAtryudyApana,n
 mahASItavatI,f
 mahASItA,f
 mahASIrza,m
@@ -114255,7 +114251,6 @@ mAdurRA,f
 mAduza,n
 mAdfS,mfn
 mAdfSa,mfn
-mAdbavollAsa,m
 mAdra,m
 mAdraka,m
 mAdrakUlaka,mfn
@@ -114340,6 +114335,7 @@ mADavendrapurI,m
 mADavezwA,f
 mADavocita,n
 mADavodBava,m
+mADavollAsa,m
 mADavozita,n
 mADavya,m
 mADavyamAnavaka,m
@@ -115778,8 +115774,8 @@ mIQA,f
 mIQu,m
 mIQuza,m
 mIQuzI,f
-mIQuztama,mfn
-mIQuztama,m
+mIQuzwama,mfn
+mIQuzwama,m
 mIQuzmat,mfn
 mIQvas,mfn
 mIna,m
@@ -115927,7 +115923,7 @@ mukundadAsaguRaleSAzwaka,n
 mukundadeva,m
 mukundapriya,m
 mukundaBawwa,m
-mukundaBawwwIya,n
+mukundaBawwIya,n
 mukundamAlA,f
 mukundamuktAratnAvalIstotrawIkA,f
 mukundamuktAvalI,f
@@ -117486,6 +117482,7 @@ mfgendratA,f
 mfgendramuKa,n
 mfgendravfzaBa,m
 mfgendrasvAtikarRa,m
+mfgendrARI,f
 mfgendrAsana,n
 mfgendrAsya,mfn
 mfgendrottara,n
@@ -118906,7 +118903,6 @@ mradimAnvita,mfn
 mradizWa,mfn
 mradIyas,mfn
 mrAtana,n
-mrigendrARI,f
 mritasaMjIvaka,mfn
 mroka,m
 mlakta,mfn
@@ -122750,7 +122746,6 @@ ratnamaYjarI,f
 ratnamaYjarIguRaleSamAtrasUcakAzwaka,n
 ratnamaYjarIguRaleSasUcakadaSaka,n
 ratnamati,m
-ratnamanjarI,f
 ratnamaya,mfn
 ratnamAlA,f
 ratnamAlAvatI,f
@@ -122934,9 +122929,9 @@ raTadurga,n
 raTadru,m
 raTadruma,m
 raTaDur,f
-raTaDurDUrgata,mfn
 raTaDurya,m
 raTaDuryatA,f
+raTaDUrgata,mfn
 raTanABi,f
 raTanirGoza,m
 raTanirhrAda,m
@@ -128115,7 +128110,7 @@ lavaRasTAna,n
 lavaRA,f
 lavaRAkara,m
 lavaRAcala,m
-lavaRAnbataka,m
+lavaRAntaka,m
 lavaRApaRa,m
 lavaRAbDi,m
 lavaRAbDija,n
@@ -130707,7 +130702,7 @@ vaDa,m
 vaDaka,mfn
 vaDaka,m
 vaDakarmADikArin,m
-vaDakAnkzin,mfn
+vaDakANkzin,mfn
 vaDakAma,mfn
 vaDakAmyA,f
 vaDakzama,mfn
@@ -132039,6 +132034,7 @@ varRodaka,n
 varRodaya,m
 varRodDfti,f
 varRopanizad,f
+varRopeta,mfn
 varRya,mfn
 varRya,n
 varRyasama,m
@@ -132182,7 +132178,6 @@ varDrakaWina,n
 varDravyuta,mfn
 varDrikA,f
 varDrI,f
-varnopeta,mfn
 varpaRIti,mfn
 varpas,n
 varpeyu,m
@@ -132237,8 +132232,8 @@ varzakftyataraMga,m
 varzaketu,m
 varzakoSa,m
 varzagaRa,m
+varzagaRitapadDati,f
 varzagiri,m
-varzagraRitapadDati,f
 varzaGna,mfn
 varzacaryAvarRana,n
 varzaja,mfn
@@ -132290,7 +132285,7 @@ varzamedas,mfn
 varzayantI,f
 varzartu,m
 varzartumAsapakzAhovelAdeSapradeSavat,mfn
-varzartuvarRnana,n
+varzartuvarRana,n
 varzalamBaka,m
 varzavara,m
 varzavarDana,mfn
@@ -139468,7 +139463,7 @@ virapSa,mfn
 virapSa,m
 virapSin,mfn
 virama,m
-viramamRa,n
+viramaRa,n
 viramita,mfn
 virala,mfn
 virala,n
@@ -140179,7 +140174,7 @@ vivAhahoma,m
 vivAhahomaviDi,m
 vivAhahomopayuktAmantra,m
 vivAhAgni,m
-vivAhAdikArmaRAmprayoga,m
+vivAhAdikarmaRAmprayoga,m
 vivAhArTa,m
 vivAhita,mfn
 vivAhecCu,mfn
@@ -142997,7 +142992,7 @@ vIsa,n
 vIsarpa,m
 vIsaladeva,m
 vIhAra,m
-vUqita,mfn
+vuqita,mfn
 vUrRa,mfn
 vUrya,n
 vfka,m
@@ -146103,6 +146098,7 @@ vOli,m
 vya,m
 vyaMSa,m
 vyaMSaka,m
+vyaMSuka,mfn
 vyaMsa,mfn
 vyaMsa,m
 vyaMsaka,m
@@ -146311,7 +146307,6 @@ vyantarapaNkti,f
 vyantarI,f
 vyantIBAva,m
 vyanvAramBaRa,n
-vyanSuka,mfn
 vyapakarza,m
 vyapakfzwa,mfn
 vyapagata,mfn
@@ -146690,9 +146685,9 @@ vyAkAra,m
 vyAkAradIpikA,f
 vyAkIrRa,mfn
 vyAkIrRa,n
+vyAkIrRakeSara,mfn
+vyAkIrRamAlyakavara,mfn
 vyAkIrRArcis,mfn
-vyAkIrnakeSara,mfn
-vyAkIrnamAlyakavara,mfn
 vyAkuYcita,mfn
 vyAkula,mfn
 vyAkula,m
@@ -147551,8 +147546,8 @@ vratapAraRa,n
 vratapAraRA,f
 vratapustaka,m
 vrataprakASa,m
-vratapratIzWA,f
-vratapratIzWAprayoga,m
+vratapratizWA,f
+vratapratizWAprayoga,m
 vrataprada,mfn
 vratapradAna,n
 vratabanDapadDati,f
@@ -148411,7 +148406,7 @@ SacItIrTa,n
 SacInandana,m
 SacInara,m
 SacIpati,m
-SacIpuraRdara,m
+SacIpuraMdara,m
 SacIbala,m
 SacIramaRa,m
 SacIvat,mfn
@@ -149398,7 +149393,7 @@ Samana,n
 SamanaviDi,m
 SamanaSvasf,f
 SamanI,f
-SamanIcameDra,m
+SamanIcameQra,m
 SamanIpAra,m
 SamanIya,mfn
 SamanIya,n
@@ -151217,7 +151212,7 @@ SAbdika,m
 SAbdikacintAmaRi,m
 SAbdikanarasiMha,m
 SAbdikarakzA,f
-SAbdikavidvaktavipramodaka,m
+SAbdikavidvatkavipramodaka,m
 SAbdikABaraRa,n
 SAbdI,f
 SAma,mfn
@@ -152065,7 +152060,7 @@ SiNga,m
 SiNgaDaraRISa,m
 SiNgaDaraRIsena,m
 SiNgaBawwa,m
-SiNgaBawwwIya,n
+SiNgaBawwIya,n
 SiNgaBUpAla,m
 SiNgaBUpAlIya,n
 SiNgaya,m
@@ -152824,7 +152819,7 @@ SivaliNgapratizWAviDi,m
 SivaliNgalakzaRa,n
 SivaliNgasUryodaya,m
 SivaliNgAnandajYAnodaya,m
-SivalINgin,m
+SivaliNgin,m
 SivalIlAmfta,n
 SivalIlArRava,m
 Sivaloka,m
@@ -158943,7 +158938,7 @@ saMgameSvarastotra,n
 saMgameSvarasvAmin,m
 saMgara,m
 saMgara,n
-saMgarakskama,mfn
+saMgarakzama,mfn
 saMgaraRa,n
 saMgarasTa,mfn
 saMgava,m
@@ -161054,7 +161049,6 @@ sakaRqUka,mfn
 sakamala,mfn
 sakampa,mfn
 sakampana,mfn
-sakara,m
 sakara,mfn
 sakaraRaka,mfn
 sakaravipulA,f
@@ -166674,7 +166668,7 @@ sarvatomuKapadDati,f
 sarvatomuKaprakaraRa,n
 sarvatomuKaprayoga,m
 sarvatomuKodgatftva,n
-sarvatomuKOgAtraprayoga,m
+sarvatomuKOdgAtraprayoga,m
 sarvatovilAsa,m
 sarvatovftta,mfn
 sarvatyAga,m
@@ -166715,7 +166709,7 @@ sarvadfS,f
 sarvadeva,m
 sarvadevata,mfn
 sarvadevatApuzpAdipUjana,n
-sarvadevatApratisTWAsArasaMgraha,m
+sarvadevatApratizWAsArasaMgraha,m
 sarvadevatAmaya,mfn
 sarvadevatya,mfn
 sarvadevapUjanaprakAra,m
@@ -166989,7 +166983,7 @@ sarvartuka,mfn
 sarvartukavana,n
 sarvartuparivarta,m
 sarvartuPala,n
-sarvalakzaRatAparya,n
+sarvalakzaRatAtparya,n
 sarvalakzaRapustaka,n
 sarvalakzaRalakzita,m
 sarvalaGu,mfn
@@ -168330,10 +168324,10 @@ sahasracaraRa,mfn
 sahasracitya,m
 sahasracetas,mfn
 sahasrajalaDAra,m
+sahasrajit,mfn
+sahasrajit,m
 sahasrajihva,mfn
 sahasrajyotis,m
-sahasraYit,mfn
-sahasraYit,m
 sahasraRI,m
 sahasraRIti,mfn
 sahasraRITa,mfn
@@ -170653,12 +170647,12 @@ sAvitri,f
 sAvitrikA,f
 sAvitrI,f
 sAvitrItIrTa,n
+sAvitrIpaYjara,n
 sAvitrIpatita,mfn
 sAvitrIpariRaya,m
 sAvitrIpariBrazwa,mfn
 sAvitrIputra,m
 sAvitrIputrIya,m
-sAvitrIpeYjara,n
 sAvitrIBAzya,n
 sAvitrIvrata,n
 sAvitrIvrataka,n
@@ -181304,7 +181298,7 @@ svayamavapanna,mfn
 svayamAgata,mfn
 svayamAtfRRa,mfn
 svayamAtfRRavat,mfn
-svayamAtfnRA,f
+svayamAtfRRA,f
 svayamAnIta,mfn
 svayamAsanaQOkana,n
 svayamAhfta,mfn
@@ -182760,7 +182754,7 @@ hatasvasf,mfn
 hatahima,mfn
 hatahfdaya,n
 hatA,f
-hatAGaSansa,mfn
+hatAGaSaMsa,mfn
 hatADimanTa,mfn
 hatAroha,mfn
 hatAvaSeza,m
@@ -183543,7 +183537,7 @@ hariharaBawwa,m
 hariharaBawwAcArya,m
 hariharaBAzya,n
 hariharaBedaDikkAra,m
-hariharamanRqalazoqaSaliNgodBava,m
+hariharamaRqalazoqaSaliNgodBava,m
 hariharamahArAja,m
 hariharamAhAtmya,n
 hariharamiSra,m

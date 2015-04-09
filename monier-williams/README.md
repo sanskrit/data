@@ -1,6 +1,8 @@
 `monier-williams`
 =================
 
+(Built from data downloaded on 2015-04-08)
+
 Data from the Monier-Williams Sanskrit-English Dictionary.
 
 The dictionary is large (70 MB) and hosted elsewhere, so it's not included in

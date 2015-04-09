@@ -925,6 +925,9 @@ jri,1,1,para
 jri,3,1,para
 jri,3,9,para
 jri,3,10,para
+jrI,,1,para
+jrI,,9,para
+jrI,,10,para
 jvar,,1,para
 jval,,1,para
 JagaJagAya,,denom,atma
@@ -1321,6 +1324,7 @@ Dvan,2,1,para
 DvANkz,,1,para
 Dvf,,1,para
 DvraR,,1,para
+naMS,,1,para
 nakk,,10,para
 nakz,,1,para
 naK,,4,para
@@ -1381,8 +1385,8 @@ nu,4,2,para
 nu,4,6,para
 nuq,,6,para
 nud,,6,para
-nU,4,2,para
-nU,4,6,para
+nU,,2,para
+nU,,6,para
 nUtanaya,,denom,para
 nft,1,4,para
 nF,,9,para
@@ -1612,6 +1616,7 @@ pruzvAya,,denom,atma
 prekIya,,denom,para
 prez,1,1,atma
 prER,,1,para
+proGIya,,denom,para
 proT,,1,para
 plakz,,1,para
 plab,,1,atma
@@ -1639,6 +1644,7 @@ Pel,,1,para
 baMh,,1,atma
 bakabakAya,,denom,atma
 bakAya,,denom,para
+baW,,1,para
 baR,,1,para
 bad,,1,para
 baDiraya,,denom,para
@@ -1646,6 +1652,7 @@ band,,1,para
 banD,,9,para
 banD,,1,para
 banD,,4,para
+baBr,,1,para
 bamb,,1,para
 barb,,1,para
 barh,,1,atma
@@ -1999,6 +2006,7 @@ mluYc,,1,para
 mleC,,1,para
 mleC,,10,para
 mlew,,1,para
+mleq,,1,para
 mlev,,1,atma
 mlE,,1,para
 yakz,,1,para
@@ -2438,6 +2446,7 @@ vfh,1,6,para
 ve,1,1,para
 vekz,,10,para
 vewy,,1,para
+veT,,1,atma
 vedApaya,,denom,para
 veD,,1,atma
 ven,,1,para
