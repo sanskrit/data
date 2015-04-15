@@ -1,4 +1,4 @@
-stem,stem_genders,ending,form_gender,case,number
+stem_type,stem_genders,ending,form_gender,case,number
 a,m,as,m,1,s
 a,m,O,m,1,d
 a,m,As,m,1,p
