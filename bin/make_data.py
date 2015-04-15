@@ -434,7 +434,7 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
 
     heading('Nouns, pronouns, and adjectives')
     # TODO: irregular nominals
-    copy_to_output_dir(paths['mw/nominals'], out_path('nominals.csv'))
+    copy_to_output_dir(paths['mw/nominal-stems'], out_path('nominal-stems.csv'))
     copy_to_output_dir(paths['lso/pronouns-inflected'],
                        out_path('pronouns.csv'))
     copy_to_output_dir(paths['lso/nominal-endings-compounded'],

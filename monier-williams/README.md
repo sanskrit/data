@@ -24,7 +24,7 @@ The files
 
 Indeclinables, including adverbs, particles (*nipāta*), and more.
 
-### `nominals.csv`
+### `nominal-stems.csv`
 (Headers: `stem,stem_genders`)
 
 Nominal stems, including nouns and adjectives. Adjectives have the `mfn` gender.

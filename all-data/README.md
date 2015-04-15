@@ -24,11 +24,11 @@ The files
 Simple (i.e. non-verbal) indeclinables.
 
 
-### `nominals.csv` [MW]
+### `nominal-stems.csv` [MW]
 
 (Headers: `stem,stem_genders`)
 
-Nouns and adjectives.
+Noun and adjective stems.
 
 
 ### `nominal-endings-compounded.csv` [LSO]
