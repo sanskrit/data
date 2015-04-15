@@ -31,6 +31,20 @@ Simple (i.e. non-verbal) indeclinables.
 Nouns and adjectives.
 
 
+### `nominal-endings-compounded.csv` [LSO]
+
+(Headers: `stem,stem_genders,ending,form_gender`)
+
+Endings for nominals that are in some compound.
+
+
+### `nominal-endings-inflected.csv` [LSO]
+
+(Headers: `stem,stem_genders,ending,form_gender,case,number`)
+
+Endings for inflected nominals.
+
+
 ### `participles.csv` [SHS]
 
 (Headers: `stem,root,class,mode,voice,modification`)

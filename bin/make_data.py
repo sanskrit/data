@@ -437,6 +437,10 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
     copy_to_output_dir(paths['mw/nominals'], out_path('nominals.csv'))
     copy_to_output_dir(paths['lso/pronouns-inflected'],
                        out_path('pronouns.csv'))
+    copy_to_output_dir(paths['lso/nominal-endings-compounded'],
+                       out_path('nominal-endings-compounded.csv'))
+    copy_to_output_dir(paths['lso/nominal-endings-inflected'],
+                       out_path('nominal-endings-inflected.csv'))
 
     heading('Simple indeclinables')
     copy_to_output_dir(paths['mw/indeclinables'],
