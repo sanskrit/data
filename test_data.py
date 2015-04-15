@@ -141,6 +141,7 @@ def test_consistent_lso_data(path):
         'form': STEM_RE,
         'number': r'[sdp]',
         'stem': STEM_RE,
+        'stem_type': STEM_RE,
         'stem_genders': '([mfn]+|none)',
         'form_gender': '([mfn]|none)',
 
