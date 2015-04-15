@@ -475,6 +475,9 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
                           blacklist_path=paths['shs/root-blacklist'],
                           out_path=out_path('verbs.csv'))
 
+    heading('Verb endings')
+    copy_to_output_dir(paths['lso/verb-endings'], out_path('verb-endings.csv'))
+
     heading('Participles')
     write_shs_verbal_data(data_path=paths['shs/parts'],
                           override_path=paths['shs/root-override'],
