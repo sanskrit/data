@@ -461,7 +461,8 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
 
     heading('Roots')
     # NOTE: prefixed roots depend on output from write_prefix_groups
-    copy_to_output_dir(paths['mw/unprefixed-roots'], 'unprefixed-roots.csv')
+    copy_to_output_dir(paths['mw/unprefixed-roots'],
+                       out_path('unprefixed-roots.csv'))
     write_mw_prefixed_roots(paths['mw/prefixed-roots'],
                             unprefixed_roots=paths['mw/unprefixed-roots'],
                             prefix_groups=out_path('prefix-groups.csv'),
@@ -488,7 +489,7 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
                    out_path=out_path('verbal-indeclinables.csv'))
 
     # Sandhi rules
-    copy_to_output_dir(paths['lso/sandhi-rules'], 'sandhi-rules.csv')
+    copy_to_output_dir(paths['lso/sandhi-rules'], out_path('sandhi-rules.csv'))
 
     if make_prefixed_verbals:
         heading('Prefixed verbs')
