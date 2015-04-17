@@ -59,7 +59,7 @@ person,third,3
 sandhi_rule_type,general,general
 sandhi_rule_type,internal,internal
 sandhi_rule_type,external,external
-voice,parasmaipada,P
-voice,atmanepada,A
-voice,ubhayapada,U
-voice,passive,passive
+voice,parasmaipada,para
+voice,atmanepada,atma
+voice,ubhayapada,ubhaya
+voice,passive,pass
