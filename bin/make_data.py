@@ -500,7 +500,7 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
     heading('Participles')
     write_shs_verbal_data(data_path=paths['shs/parts'],
                           root_converter=root_converter,
-                          out_path=out_path('participles.csv'))
+                          out_path=out_path('participle-stems.csv'))
 
     heading('Verbal indeclinables')
     write_shs_verbal_indeclinables(adverbs_path=paths['shs/adverbs'],
