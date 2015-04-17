@@ -18,7 +18,6 @@ import time
 import sandhi as S
 import util
 
-
 parser = argparse.ArgumentParser(description='Generates usable Sanskrit data.')
 parser.add_argument('--make_prefixed_verbals', action='store_true',
                     help="If set, generate prefixed verbals " +
@@ -207,17 +206,62 @@ def write_mw_prefixed_roots(prefixed_roots, unprefixed_roots, prefix_groups,
             write_row(dict(zip(labels, row)))
 
 
-def get_mw_root_from_shs_root(root, blacklist, override):
-    if root in blacklist:
-        return None
+def make_root_converter(shs_roots_path, shs_blacklist_path, shs_override_path,
+                        mw_unprefixed_roots_path):
+    """Returns a dict that maps SHS roots to MW roots.
 
-    if root in override:
-        return override[root]
+    Specifically, the dict maps strings to a list of (root, hom) tuples.
+    """
+    with util.read_csv(shs_blacklist_path) as reader:
+        blacklist = {x['name'] for x in reader}
 
-    return root.partition('#')[0]
+    with util.read_csv(shs_override_path) as reader:
+        override = {x['shs']: x['mw'] for x in reader}
+
+    # (root, class) -> [shs_root]
+    class_pair_to_shs_roots = {}
+    with util.read_csv(shs_roots_path) as reader:
+        for row in reader:
+            shs_root = row['root']
+            vclass = row['class']
+
+            clean_root = shs_root
+            if shs_root in blacklist:
+                clean_root = None
+            elif shs_root in override:
+                clean_root = override[shs_root]
+
+            if clean_root is None:
+                continue
+            clean_root = shs_root.partition('#')[0]
+            class_pair_to_shs_roots.setdefault((clean_root, vclass),
+                                               set()).add(clean_root)
+    assert len(class_pair_to_shs_roots.keys()) > 0
+
+    # (root, class) -> [(mw_root, hom)]
+    class_pair_to_mw_roots = {}
+    with util.read_csv(mw_unprefixed_roots_path) as reader:
+        for row in reader:
+            root, hom, vclass = row['root'], row['hom'], row['class']
+            class_pair_to_mw_roots.setdefault((root, vclass),
+                                              []).append((root, hom))
+    assert len(class_pair_to_mw_roots.keys()) > 0
+
+    # shs_root -> (mw_root, hom)
+    converter = {}
+    for shs_pair in class_pair_to_shs_roots:
+        if shs_pair not in class_pair_to_mw_roots:
+            continue
+        shs_roots = class_pair_to_shs_roots[shs_pair]
+        for shs_root in shs_roots:
+            for mw_root in class_pair_to_mw_roots[shs_pair]:
+                converter[shs_root] = mw_root
+
+    assert len(converter.keys()) > 0
+    return converter
 
 
-def write_shs_verbal_data(data_path, blacklist_path, override_path, out_path):
+def write_shs_verbal_data(data_path, root_converter, out_path):
     """Write Sanskrit Heritage Site data after converting its roots.
 
     :param data_path: path to the actual verb data
@@ -226,66 +270,54 @@ def write_shs_verbal_data(data_path, blacklist_path, override_path, out_path):
                           isn't in this map, assume the SHS roots are just fine.
     :param out_path:
     """
-    with util.read_csv(blacklist_path) as reader:
-        blacklist = {x['name'] for x in reader}
-
-    with util.read_csv(override_path) as reader:
-        override = {x['shs']: x['mw'] for x in reader}
-
     labels = None
     clean_rows = []
     with util.read_csv(data_path) as reader:
         for row in reader:
-            root = get_mw_root_from_shs_root(row['root'], blacklist=blacklist,
-                                             override=override)
-            if root is None:
+            root_pair = root_converter.get(row['root'])
+            if root_pair is None:
                 continue
+            root, hom = root_pair
             row['root'] = root
+            row['hom'] = hom
             clean_rows.append(row)
         labels = reader.fieldnames
+        labels.insert(labels.index('root') + 1, 'hom')
 
     with util.write_csv(out_path, labels) as write_row:
         for row in clean_rows:
             write_row(row)
 
 
-def write_shs_verbal_indeclinables(adverbs_path, final_path, blacklist_path,
-                                   override_path, out_path):
+def write_shs_verbal_indeclinables(adverbs_path, final_path, root_converter,
+                                   out_path):
     """Write SHS verbal indeclinables."""
-    with util.read_csv(blacklist_path) as reader:
-        blacklist = {x['name'] for x in reader}
-
-    with util.read_csv(override_path) as reader:
-        override = {x['shs']: x['mw'] for x in reader}
-
     labels = None
     clean_rows = []
     with util.read_csv(adverbs_path) as reader:
         for row in reader:
-            root = get_mw_root_from_shs_root(row['root'], blacklist=blacklist,
-                                             override=override)
-            if root is None:
+            root_pair = root_converter.get(row['root'])
+            if root_pair is None:
                 continue
-            row['root'] = root
+            row['root'] = root_pair[0]
+            row['hom'] = root_pair[1]
             clean_rows.append(row)
-
-        labels = reader.fieldnames
 
     with util.read_csv(final_path) as reader:
         for row in reader:
-            root = get_mw_root_from_shs_root(row['root'], blacklist=blacklist,
-                                             override=override)
-            if root is None:
+            root_pair = root_converter.get(row['root'])
+            if root_pair is None:
                 continue
 
+            row['root'] = root_pair[0]
+            row['hom'] = root_pair[1]
             # TODO: handle 'ya' gerunds
             if not row['form'].endswith('um'):
                 continue
-
-            row['root'] = root
             clean_rows.append(row)
 
-        assert labels == reader.fieldnames
+        labels = reader.fieldnames
+        labels.insert(labels.index('root') + 1, 'hom')
 
     with util.write_csv(out_path, labels) as write_row:
         for row in clean_rows:
@@ -296,22 +328,13 @@ def write_shs_verbal_indeclinables(adverbs_path, final_path, blacklist_path,
 # ------------------
 
 
-def write_prefixed_shs_verbal_data(data_path, prefixed_roots, blacklist_path,
-                                   override_path, sandhi_rules, out_path):
+def write_prefixed_shs_verbal_data(data_path, prefixed_roots, root_converter,
+                                   sandhi_rules, out_path):
     """Write Sanskrit Heritage Site data after converting its roots.
 
     :param data_path: path to the actual verb data
-    :param blacklist_path: path to a list of blacklisted roots
-    :param override_path: path to a map from SHS roots to MW roots. If a root
-                          isn't in this map, assume the SHS roots are just fine.
     :param out_path:
     """
-    with util.read_csv(blacklist_path) as reader:
-        blacklist = {x['name'] for x in reader}
-
-    with util.read_csv(override_path) as reader:
-        override = {x['shs']: x['mw'] for x in reader}
-
     sandhi = make_sandhi_object(sandhi_rules)
 
     root_to_prefixed = {}
@@ -323,11 +346,10 @@ def write_prefixed_shs_verbal_data(data_path, prefixed_roots, blacklist_path,
     clean_rows = []
     with util.read_csv(data_path) as reader:
         for row in reader:
-            root = get_mw_root_from_shs_root(row['root'], blacklist=blacklist,
-                                             override=override)
-            if root is None:
+            root_pair = root_converter.get(row['root'])
+            if root_pair is None:
                 continue
-            row['root'] = root
+            root, hom = root_pair
 
             for result in root_to_prefixed.get(root, []):
                 new_row = row.copy()
@@ -336,7 +358,7 @@ def write_prefixed_shs_verbal_data(data_path, prefixed_roots, blacklist_path,
                         new_row[field] = sandhi.join(
                             result['prefixes'].split('-') + [new_row[field]])
                 new_row['root'] = result['prefixed_root']
-                new_row['hom'] = result['hom']
+                new_row['hom'] = hom
                 clean_rows.append(new_row)
         labels = reader.fieldnames + ['hom']
 
@@ -346,15 +368,8 @@ def write_prefixed_shs_verbal_data(data_path, prefixed_roots, blacklist_path,
 
 
 def write_prefixed_shs_verbal_indeclinables(adverbs_path, final_path,
-            sandhi_rules,
-            prefixed_roots, blacklist_path, override_path, out_path):
+            sandhi_rules, prefixed_roots, root_converter, out_path):
     """Write prefixed SHS verbal indeclinables."""
-    with util.read_csv(blacklist_path) as reader:
-        blacklist = {x['name'] for x in reader}
-
-    with util.read_csv(override_path) as reader:
-        override = {x['shs']: x['mw'] for x in reader}
-
     sandhi = make_sandhi_object(sandhi_rules)
 
     root_to_prefixed = {}
@@ -366,10 +381,11 @@ def write_prefixed_shs_verbal_indeclinables(adverbs_path, final_path,
     clean_rows = []
     with util.read_csv(adverbs_path) as reader:
         for row in reader:
-            root = get_mw_root_from_shs_root(row['root'], blacklist=blacklist,
-                                             override=override)
-            if root is None:
+            root_pair = root_converter.get(row['root'])
+            if root_pair is None:
                 continue
+            root, hom = root_pair
+
             row['root'] = root
 
             for result in root_to_prefixed.get(root, []):
@@ -386,10 +402,10 @@ def write_prefixed_shs_verbal_indeclinables(adverbs_path, final_path,
 
     with util.read_csv(final_path) as reader:
         for row in reader:
-            root = get_mw_root_from_shs_root(row['root'], blacklist=blacklist,
-                                             override=override)
-            if root is None:
+            root_pair = root_converter.get(row['root'])
+            if root_pair is None:
                 continue
+            root, hom = root_pair
 
             # TODO: handle 'ya' gerunds
             if not row['form'].endswith('um'):
@@ -470,9 +486,12 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
                             out_path=out_path('prefixed-roots.csv'))
 
     heading('Verbs')
+    root_converter = make_root_converter(paths['shs/roots'],
+            paths['shs/root-blacklist'],
+            paths['shs/root-override'],
+            paths['mw/unprefixed-roots'])
     write_shs_verbal_data(data_path=paths['shs/roots'],
-                          override_path=paths['shs/root-override'],
-                          blacklist_path=paths['shs/root-blacklist'],
+                          root_converter=root_converter,
                           out_path=out_path('verbs.csv'))
 
     heading('Verb endings')
@@ -480,15 +499,13 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
 
     heading('Participles')
     write_shs_verbal_data(data_path=paths['shs/parts'],
-                          override_path=paths['shs/root-override'],
-                          blacklist_path=paths['shs/root-blacklist'],
+                          root_converter=root_converter,
                           out_path=out_path('participles.csv'))
 
     heading('Verbal indeclinables')
     write_shs_verbal_indeclinables(adverbs_path=paths['shs/adverbs'],
                    final_path=paths['shs/final'],
-                   override_path=paths['shs/root-override'],
-                   blacklist_path=paths['shs/root-blacklist'],
+                   root_converter=root_converter,
                    out_path=out_path('verbal-indeclinables.csv'))
 
     # Sandhi rules
@@ -498,16 +515,12 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
         heading('Prefixed verbs')
         write_prefixed_shs_verbal_data(data_path=paths['shs/roots'],
                    prefixed_roots=out_path('prefixed-roots.csv'),
-                   override_path=paths['shs/root-override'],
-                   blacklist_path=paths['shs/root-blacklist'],
                    sandhi_rules=paths['lso/sandhi-rules'],
                    out_path=out_path('prefixed-verbs.csv'))
 
         heading('Prefixed participles')
         write_prefixed_shs_verbal_data(data_path=paths['shs/parts'],
                    prefixed_roots=out_path('prefixed-roots.csv'),
-                   override_path=paths['shs/root-override'],
-                   blacklist_path=paths['shs/root-blacklist'],
                    sandhi_rules=paths['lso/sandhi-rules'],
                    out_path=out_path('prefixed-participles.csv'))
 
@@ -516,8 +529,7 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
             adverbs_path=paths['shs/adverbs'],
             final_path=paths['shs/final'],
             prefixed_roots=out_path('prefixed-roots.csv'),
-            override_path=paths['shs/root-override'],
-            blacklist_path=paths['shs/root-blacklist'],
+            root_converter=root_converter,
             sandhi_rules=paths['lso/sandhi-rules'],
             out_path=out_path('prefixed-verbal-indeclinables.csv'))
 
