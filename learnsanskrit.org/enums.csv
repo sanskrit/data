@@ -37,7 +37,7 @@ mode,aorist,aor
 mode,imperfect,ipft
 mode,perfect,perf
 mode,simple future,sfut
-mode,distant future,dfut
+mode,periphrastic future,pfut
 mode,conditional,cond
 mode,optative,opt
 mode,imperative,impv
