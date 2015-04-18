@@ -23,6 +23,12 @@ class read_csv(object):
         self.f.close()
 
 
+def read_csv_rows(filename):
+    with read_csv(filename) as reader:
+        for row in reader:
+            yield row
+
+
 class write_csv(object):
 
     def __init__(self, filename, labels):

@@ -187,18 +187,27 @@ def write_mw_prefixed_roots(prefixed_roots, unprefixed_roots, prefix_groups,
 
     with util.read_csv(prefix_groups) as reader:
         prefix_groups = {x['group']: x['prefixes'] for x in reader}
+    with util.read_csv(unprefixed_roots) as reader:
+        root_set = {(x['root'], x['hom']) for x in reader}
 
+    candidate_homs = [None] + [str(i) for i in range(1, 10)]
     sandhi = make_sandhi_object(sandhi_rules)
 
-    with util.read_csv(prefixed_roots) as reader:
+    for row in util.read_csv_rows(prefixed_roots):
         rows = []
-        for row in reader:
-            for group in sandhi.split_off(row['prefixed_root'],
-                                          row['unprefixed_root']):
-                if group in prefix_groups:
-                    rows.append((row['prefixed_root'], prefix_groups[group],
-                                 row['unprefixed_root'], row['hom']))
-                    break
+        for group in sandhi.split_off(row['prefixed_root'],
+                                      row['unprefixed_root']):
+            if group in prefix_groups:
+                basis, hom = row['unprefixed_root'], row['hom']
+                if (basis, hom) not in root_set:
+                    for x in candidate_homs:
+                        if (basis, x) in root_set:
+                            hom = x
+                            break
+
+                rows.append((row['prefixed_root'], prefix_groups[group],
+                             row['unprefixed_root'], hom))
+                break
 
     labels = ['prefixed_root', 'prefixes', 'unprefixed_root', 'hom']
     with util.write_csv(out_path, labels) as write_row:
