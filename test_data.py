@@ -149,7 +149,7 @@ def test_consistent_lso_data(path):
         'category': '(both|simple|complex)',
         'person': '[123]',
         'number': '[sdp]',
-        'mode': r'(pres|impv|past|ipft|opt|ben|inj|perf|fut|sfut|dfut|cond|aor)',
+        'mode': r'(pres|impv|past|ipft|opt|ben|inj|perf|fut|sfut|pfut|cond|aor)',
         'voice': '(para|atma)',
 
         # Sandhi
