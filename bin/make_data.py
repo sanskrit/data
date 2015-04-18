@@ -193,8 +193,8 @@ def write_mw_prefixed_roots(prefixed_roots, unprefixed_roots, prefix_groups,
     candidate_homs = [None] + [str(i) for i in range(1, 10)]
     sandhi = make_sandhi_object(sandhi_rules)
 
+    rows = []
     for row in util.read_csv_rows(prefixed_roots):
-        rows = []
         for group in sandhi.split_off(row['prefixed_root'],
                                       row['unprefixed_root']):
             if group in prefix_groups:
@@ -244,7 +244,7 @@ def make_root_converter(shs_roots_path, shs_blacklist_path, shs_override_path,
                 continue
             clean_root = shs_root.partition('#')[0]
             class_pair_to_shs_roots.setdefault((clean_root, vclass),
-                                               set()).add(clean_root)
+                                               set()).add(shs_root)
     assert len(class_pair_to_shs_roots.keys()) > 0
 
     # (root, class) -> [(mw_root, hom)]
