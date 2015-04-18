@@ -394,7 +394,7 @@ def write_prefixed_shs_verbal_indeclinables(adverbs_path, final_path,
                     if field in row:
                         new_row[field] = sandhi.join(
                             result['prefixes'].split('-') + [new_row[field]])
-                new_row['root'] = result['prefixed-root']
+                new_row['root'] = result['prefixed_root']
                 new_row['hom'] = result['hom']
                 clean_rows.append(new_row)
 
@@ -419,7 +419,7 @@ def write_prefixed_shs_verbal_indeclinables(adverbs_path, final_path,
                     if field in row:
                         new_row[field] = sandhi.join(
                             result['prefixes'].split('-') + [new_row[field]])
-                new_row['root'] = result['prefixed-root']
+                new_row['root'] = result['prefixed_root']
                 new_row['hom'] = result['hom']
                 clean_rows.append(new_row)
 
@@ -515,12 +515,14 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
         heading('Prefixed verbs')
         write_prefixed_shs_verbal_data(data_path=paths['shs/roots'],
                    prefixed_roots=out_path('prefixed-roots.csv'),
+                   root_converter=root_converter,
                    sandhi_rules=paths['lso/sandhi-rules'],
                    out_path=out_path('prefixed-verbs.csv'))
 
         heading('Prefixed participles')
         write_prefixed_shs_verbal_data(data_path=paths['shs/parts'],
                    prefixed_roots=out_path('prefixed-roots.csv'),
+                   root_converter=root_converter,
                    sandhi_rules=paths['lso/sandhi-rules'],
                    out_path=out_path('prefixed-participles.csv'))
 
