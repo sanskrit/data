@@ -45,6 +45,7 @@ mode,benedictive,ben
 mode,injunctive,inj
 mode,future optative,f-opt
 mode,future imperative,f-impv
+mode,future (for participles),fut
 mode,past (for participles),past
 modification,causative,caus
 modification,desiderative,desid
@@ -56,10 +57,11 @@ number,unknown,?
 person,first,1
 person,second,2
 person,third,3
-sandhi_rule_type,general,general
+sandhi_rule_type,common,common
 sandhi_rule_type,internal,internal
 sandhi_rule_type,external,external
 voice,parasmaipada,para
 voice,atmanepada,atma
 voice,ubhayapada,ubhaya
+voice,active,active
 voice,passive,pass
