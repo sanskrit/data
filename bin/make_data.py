@@ -382,8 +382,8 @@ def write_prefixed_shs_verbal_data(data_path, prefixed_roots, root_converter,
             write_row(row)
 
 
-def write_prefixed_shs_verbal_indeclinables(adverbs_path, final_path,
-            sandhi_rules, prefixed_roots, root_converter, out_path):
+def write_prefixed_shs_verbal_indeclinables(final_path, sandhi_rules,
+        prefixed_roots, root_converter, out_path):
     """Write prefixed SHS verbal indeclinables."""
     sandhi = make_sandhi_object(sandhi_rules)
 
@@ -394,7 +394,7 @@ def write_prefixed_shs_verbal_indeclinables(adverbs_path, final_path,
 
     labels = None
     clean_rows = []
-    with util.read_csv(adverbs_path) as reader:
+    with util.read_csv(final_path) as reader:
         for row in reader:
             root_pair = root_converter.get(row['root'])
             if root_pair is None:
@@ -402,7 +402,6 @@ def write_prefixed_shs_verbal_indeclinables(adverbs_path, final_path,
             root, hom = root_pair
 
             row['root'] = root
-
             for result in root_to_prefixed.get(root, []):
                 new_row = row.copy()
                 for field in ['form', 'stem']:
@@ -414,31 +413,6 @@ def write_prefixed_shs_verbal_indeclinables(adverbs_path, final_path,
                 clean_rows.append(new_row)
 
         labels = reader.fieldnames
-
-    with util.read_csv(final_path) as reader:
-        for row in reader:
-            root_pair = root_converter.get(row['root'])
-            if root_pair is None:
-                continue
-            root, hom = root_pair
-
-            # TODO: handle 'ya' gerunds
-            if not row['form'].endswith('um'):
-                continue
-
-            row['root'] = root
-
-            for result in root_to_prefixed.get(root, []):
-                new_row = row.copy()
-                for field in ['form', 'stem']:
-                    if field in row:
-                        new_row[field] = sandhi.join(
-                            result['prefixes'].split('-') + [new_row[field]])
-                new_row['root'] = result['prefixed_root']
-                new_row['hom'] = result['hom']
-                clean_rows.append(new_row)
-
-        assert labels == reader.fieldnames
 
     labels += ['hom']
     old_rows = list(util.read_csv_rows(out_path))
@@ -547,7 +521,6 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
 
         heading('Prefixed indeclinables')
         write_prefixed_shs_verbal_indeclinables(
-            adverbs_path=paths['shs/adverbs'],
             final_path=paths['shs/final'],
             prefixed_roots=out_path('prefixed-roots.csv'),
             root_converter=root_converter,
