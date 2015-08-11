@@ -527,6 +527,9 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
             sandhi_rules=paths['lso/sandhi-rules'],
             out_path=out_path('verbal-indeclinables.csv'))
 
+    # Enums
+    copy_to_output_dir(paths['lso/enums'], out_path('enums.csv'))
+
 
 def main():
     args = parser.parse_args()
