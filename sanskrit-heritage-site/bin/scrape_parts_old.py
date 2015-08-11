@@ -53,7 +53,7 @@ def scrape(parts_file):
                 stem = form[:-1]
             elif form.endswith('an'):
                 stem = form[:-1] + 't'   # -an  -> -at
-            elif mode == 'perfect':
+            elif mode == 'perf':
                 stem = form[:-2] + 'as'  # -vAn -> -vas
             elif mode == 'past':
                 stem = form[:-2] + 'at'  # -vAn -> -vat
