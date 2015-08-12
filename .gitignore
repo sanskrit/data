@@ -1,2 +1,4 @@
 all-data
 *.pyc
+*un~
+env/
