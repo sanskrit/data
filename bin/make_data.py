@@ -10,7 +10,7 @@
 import argparse
 import csv
 import os
-import Queue
+import queue
 import shutil
 import sys
 import time
@@ -125,7 +125,7 @@ def write_prefix_groups(prefixed_roots, unprefixed_roots, upasargas, other,
             unprefixed_root = row['unprefixed_root']
             last_letter = None
 
-            q = Queue.PriorityQueue()
+            q = queue.PriorityQueue()
             for remainder in sandhi.split_off(prefixed_root, unprefixed_root):
                 q.put_nowait((0, (), remainder))
 
@@ -427,7 +427,7 @@ def write_prefixed_shs_verbal_indeclinables(final_path, sandhi_rules,
 def build_data(project_dir, output_dir, make_prefixed_verbals):
 
     def heading(s):
-        print '# ' + s + '...'
+        print('# ' + s + '...')
 
 
     def out_path(filename):

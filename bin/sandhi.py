@@ -147,7 +147,7 @@ class Sandhi(object):
         splitter = self.splitter
         chunk_len = len(chunk)
 
-        for i in xrange(chunk_len):
+        for i in range(chunk_len):
             # Default split: chop the chunk in half with no other changes.
             # This can yield a lot of false positives.
             chunk1, chunk2 = chunk[:i], chunk[i:]
