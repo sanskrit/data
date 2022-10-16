@@ -371,7 +371,9 @@ def write_prefixed_shs_verbal_data(data_path, prefixed_roots, root_converter,
                 new_row['root'] = result['prefixed_root']
                 new_row['hom'] = hom
                 clean_rows.append(new_row)
-        labels = reader.fieldnames + ['hom']
+
+        labels = reader.fieldnames
+        labels.insert(labels.index('root') + 1, 'hom')
 
     old_rows = list(util.read_csv_rows(out_path))
     clean_rows.sort(key=lambda x: util.key_fn(x['root']))
@@ -413,8 +415,8 @@ def write_prefixed_shs_verbal_indeclinables(final_path, sandhi_rules,
                 clean_rows.append(new_row)
 
         labels = reader.fieldnames
+        labels.insert(labels.index('root') + 1, 'hom')
 
-    labels += ['hom']
     old_rows = list(util.read_csv_rows(out_path))
     clean_rows.sort(key=lambda x: util.key_fn(x['root']))
     with util.write_csv(out_path, labels) as write_row:
