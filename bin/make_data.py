@@ -11,6 +11,7 @@ import argparse
 import csv
 import os
 import queue
+import re
 import shutil
 import sys
 import time
@@ -22,6 +23,12 @@ parser = argparse.ArgumentParser(description='Generates usable Sanskrit data.')
 parser.add_argument('--make_prefixed_verbals', action='store_true',
                     help="If set, generate prefixed verbals " +
                     "('AgacCati', 'Agata', 'Agantum').")
+
+
+def _apply_natva(s: str) -> str:
+    """Apply `n` --> `ṇ` retroflexion."""
+    # For details, see Ashtadhyayi 8.4.1 - 8.4.2.
+    return re.sub(r"([fFrz][aAiIuUfFxXeEoOhyvrkKgGNpPbBm]*)n", r"\1R", s)
 
 
 def make_path_map(project_dir, pairs):
@@ -288,6 +295,8 @@ def write_shs_verbal_data(data_path, root_converter, out_path):
             root_pair = root_converter.get(row['root'])
             if root_pair is None:
                 continue
+            if 'stem' in row:
+                row['stem'] = _apply_natva(row['stem'])
             root, hom = root_pair
             row['root'] = root
             row['hom'] = hom
