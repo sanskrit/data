@@ -53,6 +53,19 @@ def copy_to_output_dir(in_path, out_path):
     shutil.copy(in_path, out_path)
 
 
+def cat(in_paths, out_path):
+    """Copy each path in `in_paths` to `out_path`."""
+    data = []
+    with open(out_path, 'w') as out:
+        out.write('name\n')
+        for path in in_paths:
+            with open(path) as f:
+                for i, line in enumerate(f):
+                    if i == 0:
+                        continue
+                    out.write(line)
+
+
 def make_sandhi_object(sandhi_rules_file):
     """Makes a Sandhi object for splitting and joining verb prefixes."""
     with util.read_csv(sandhi_rules_file) as reader:
@@ -463,7 +476,7 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
                        out_path('nominal-endings-inflected.csv'))
 
     heading('Simple indeclinables')
-    copy_to_output_dir(paths['mw/indeclinables'],
+    cat([paths['mw/indeclinables'], paths['lso/indeclinables']],
                        out_path('indeclinables.csv'))
 
     heading('Verb prefixes')
