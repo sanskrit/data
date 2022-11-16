@@ -71,6 +71,12 @@ The list is a CSV file with the following headers:
   and `external` rules apply between words (generally speaking).
 
 
+### `sarvanamas.csv`
+
+A list of inflected *sarvanāma* words not already contained in the
+`pronouns-*.csv` files.
+
+
 ### `upasargas.csv`
 
 A list of all upasargas. This excludes other prefixes, such as noun prefixes
