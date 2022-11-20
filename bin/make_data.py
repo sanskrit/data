@@ -302,6 +302,8 @@ def make_root_converter(
             for mw_root in class_pair_to_mw_roots[shs_pair]:
                 converter[shs_root] = mw_root
 
+    converter["dfS#1"] = ("dfS", "1")
+
     assert converter
     return converter
 
@@ -484,7 +486,7 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
     )
 
     heading("Nouns, pronouns, and adjectives")
-    # TODO: irregular nominals
+    copy_to_output_dir(paths["lso/nouns-irregular-inflected"], out_path("nominals-irregular.csv"))
     copy_to_output_dir(paths["mw/nominal-stems"], out_path("nominal-stems.csv"))
     cat(
         [paths["lso/pronouns-inflected"], paths["lso/sarvanamas-inflected"]],
