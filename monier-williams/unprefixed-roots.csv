@@ -1199,6 +1199,7 @@ dfP,1,6,para
 dfB,1,1,para
 dfB,1,10,para
 dfB,2,6,para
+dfS,,1,para
 dfh,,1,para
 dfh,,4,para
 dfh,,1,atma
@@ -1447,7 +1448,6 @@ pall,,1,para
 pallavaya,,denom,para
 pav,,1,atma
 pavitraya,,denom,para
-paS,3,10,para
 paz,,1,para
 paz,,10,para
 pas,,1,para

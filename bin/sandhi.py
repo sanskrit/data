@@ -11,17 +11,21 @@ import collections
 
 
 PREFIX_SANDHI_RULES = [
-    ('a', 'f', 'Ar'),
-    ('i', 's', 'iz'),
-    ('i', 'st', 'izw'),
-    ('i', 'sT', 'izW'),
-    ('u', 's', 'uz'),
-    ('u', 'st', 'uzw'),
-    ('u', 'sT', 'uzW'),
-    ('is', 't', 'izw'),
-    ('t', 'sk', 'tk'),
-    ('t', 'st', 'tt'),
-    ('t', 'sT', 'tT'),
+    ("a", "f", "Ar"),
+    ("i", "s", "iz"),
+    ("i", "st", "izw"),
+    ("i", "sT", "izW"),
+    ("u", "s", "uz"),
+    ("u", "st", "uzw"),
+    ("u", "sT", "uzW"),
+    ("is", "t", "izw"),
+    ("t", "sk", "tk"),
+    ("t", "st", "tt"),
+    ("t", "sT", "tT"),
+    ("d", "t", "tt"),
+    ("d", "T", "tT"),
+    ("d", "st", "tt"),
+    ("d", "sT", "tT"),
 ]
 
 
@@ -54,11 +58,10 @@ class Sandhi(object):
         self.splitter = HashTrie()
 
         for first, second, result in rules:
-            self.joiner[(first, second)] = result.replace(' ', '')
+            self.joiner[(first, second)] = result.replace(" ", "")
 
-            result = result.replace(' ', '')
-            items = (first, second, result, len(first), len(second),
-                     len(result))
+            result = result.replace(" ", "")
+            items = (first, second, result, len(first), len(second), len(result))
             self.splitter[result] = items
 
     @staticmethod
@@ -68,17 +71,17 @@ class Sandhi(object):
         """
         return term
 
-        vowels = {'aAiIuUfFxXeEoO'}
+        vowels = {"aAiIuUfFxXeEoO"}
         # causes "s" retroflexion
-        s_trigger = set('iIuUfFeEoOkr')
+        s_trigger = set("iIuUfFeEoOkr")
         # causes "n" retroflexion
-        n_trigger = set('fFrz')
+        n_trigger = set("fFrz")
         # Allowed after n_trigger
-        n_between = vowels.union('kKgGNpPbBmhvyM')
+        n_between = vowels.union("kKgGNpPbBmhvyM")
         # Must appear after the retroflexed "n"
-        n_after = vowels.union('myvn')
+        n_after = vowels.union("myvn")
         # Defines t retroflexion
-        retroflexion_dict = dict(zip('tT', 'wW'))
+        retroflexion_dict = dict(zip("tT", "wW"))
 
         letters = list(term)
 
@@ -93,24 +96,24 @@ class Sandhi(object):
                 letters[i] = retroflexion_dict.get(L, L)
 
             # "s" retroflexion
-            if apply_s and L == 's':
-                letters[i] = L = 'z'
+            if apply_s and L == "s":
+                letters[i] = L = "z"
                 had_s = True
             apply_s = L in s_trigger
 
             # "n" retroflexion
-            if had_n and L == 'n':
-                letters[i] = 'R'
+            if had_n and L == "n":
+                letters[i] = "R"
                 had_n = False
-            elif apply_n and L == 'n' and letters[i + 1] in n_after:
-                letters[i] = 'R'
+            elif apply_n and L == "n" and letters[i + 1] in n_after:
+                letters[i] = "R"
                 had_n = True
             if L in n_trigger:
                 apply_n = True
             else:
                 apply_n = apply_n and L in n_between
 
-        return ''.join(letters)
+        return "".join(letters)
 
     def join(self, chunks):
         it = iter(chunks)
@@ -162,7 +165,7 @@ class Sandhi(object):
                 yield (before, after)
 
         # Non-split: yield the chunk as-is.
-        yield (chunk, '')
+        yield (chunk, "")
 
     def split_off(self, chunk, fragment):
         """Remove `fragment` from the end of `chunk` and yield the results.

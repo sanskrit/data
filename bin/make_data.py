@@ -59,7 +59,7 @@ def cat(in_paths, out_path, headers: list[str]):
     """Copy each path in `in_paths` to `out_path`."""
     data = []
     with open(out_path, "w") as out:
-        out.write(','.join(headers))
+        out.write(",".join(headers))
         out.write("\n")
         for path in in_paths:
             with open(path) as f:
@@ -276,10 +276,13 @@ def make_root_converter(
             if clean_root is None:
                 continue
             clean_root = shs_root.partition("#")[0]
-            class_pair_to_shs_roots.setdefault((clean_root, vclass), set()).add(
-                shs_root
-            )
-    assert len(class_pair_to_shs_roots.keys()) > 0
+            key = (clean_root, vclass)
+            # Fix an SHS modeling decision to align with MW
+            if key == ("paS", "4"):
+                key = ("dfS", "1")
+
+            class_pair_to_shs_roots.setdefault(key, set()).add(shs_root)
+    assert class_pair_to_shs_roots
 
     # (root, class) -> [(mw_root, hom)]
     class_pair_to_mw_roots = {}
@@ -287,7 +290,7 @@ def make_root_converter(
         for row in reader:
             root, hom, vclass = row["root"], row["hom"], row["class"]
             class_pair_to_mw_roots.setdefault((root, vclass), []).append((root, hom))
-    assert len(class_pair_to_mw_roots.keys()) > 0
+    assert class_pair_to_mw_roots
 
     # shs_root -> (mw_root, hom)
     converter = {}
@@ -299,7 +302,7 @@ def make_root_converter(
             for mw_root in class_pair_to_mw_roots[shs_pair]:
                 converter[shs_root] = mw_root
 
-    assert len(converter.keys()) > 0
+    assert converter
     return converter
 
 
