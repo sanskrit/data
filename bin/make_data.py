@@ -486,7 +486,14 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
     )
 
     heading("Nouns, pronouns, and adjectives")
-    copy_to_output_dir(paths["lso/nouns-irregular-inflected"], out_path("nominals-irregular.csv"))
+    cat(
+        [
+            paths["lso/nouns-irregular-inflected"],
+            paths["lso/adjectives-irregular-inflected"],
+        ],
+        out_path("nominals-irregular.csv"),
+        headers=["stem", "stem_genders", "form", "form_gender", "case", "number"],
+    )
     copy_to_output_dir(paths["mw/nominal-stems"], out_path("nominal-stems.csv"))
     cat(
         [paths["lso/pronouns-inflected"], paths["lso/sarvanamas-inflected"]],
