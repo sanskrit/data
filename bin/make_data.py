@@ -15,6 +15,7 @@ import re
 import shutil
 import sys
 import time
+from typing import List
 
 import sandhi as S
 import util
@@ -55,7 +56,7 @@ def copy_to_output_dir(in_path, out_path):
     shutil.copy(in_path, out_path)
 
 
-def cat(in_paths, out_path, headers: list[str]):
+def cat(in_paths, out_path, headers: List[str]):
     """Copy each path in `in_paths` to `out_path`."""
     data = []
     with open(out_path, "w") as out:
