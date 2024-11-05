@@ -483,6 +483,7 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
             ("mw", "monier-williams"),
             ("shs", "sanskrit-heritage-site"),
             ("lso", "learnsanskrit.org"),
+            ("ashtadhyayi.com", "ashtadhyayi.com"),
         ],
     )
 
@@ -533,6 +534,7 @@ def build_data(project_dir, output_dir, make_prefixed_verbals):
         sandhi_rules=paths["lso/sandhi-rules"],
         out_path=out_path("prefix-groups.csv"),
     )
+    copy_to_output_dir(paths["ashtadhyayi.com/upasargas"], out_path("upasarga-dhatus.csv"))
 
     heading("Roots")
     # NOTE: prefixed roots depend on output from write_prefix_groups
